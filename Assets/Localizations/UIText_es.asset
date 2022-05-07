@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UIText_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 2ac7cbb548de8604b8258441a4dd5245, type: 2}
+  m_Metadata:
+    m_Items:
+    - id: 0
+  m_TableData:
+  - m_Id: 585271496704
+    m_Localized: "Compre la versi\xF3n completa para obtener fondos, niveles, botines
+      y m\xFAsicas adicionales"
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1257870086144
+    m_Localized: Ajustes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506973995008
+    m_Localized: "Gr\xE1ficos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1861979885568
+    m_Localized: Sonidos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2101722107904
+    m_Localized: Efectos especiales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2345939652608
+    m_Localized: Nivel de calidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23796633718784
+    m_Localized: Bajo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24060266696704
+    m_Localized: Medio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24305511845888
+    m_Localized: Alto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24495429931008
+    m_Localized: Max
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27455983603712
+    m_Localized: Sonidos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27634082140160
+    m_Localized: Global
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27854903857152
+    m_Localized: Musicas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28001025019904
+    m_Localized: Efectos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29226793586688
+    m_Localized: "Selecci\xF3n de nivel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29397912801280
+    m_Localized: Resumen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29579488415744
+    m_Localized: Mejor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29719041298432
+    m_Localized: Tiempo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29865187627008
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29969223143424
+    m_Localized: "\xC9xito"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30115033927680
+    m_Localized: Fracaso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30379862282240
+    m_Localized: Tienda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31191334277120
+    m_Localized: Sin Datos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348285351383040
+    m_Localized: 'Versione completa inclusa
+
+
+      * 13 musiche
+
+      * 4 bottini
+
+      *
+      24 livelli
+
+      * 15 sfondi'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348845739757568
+    m_Localized: Acquistare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1443383057207296
+    m_Localized: Tiempo pasado
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0050e64488000000

@@ -1,0 +1,20 @@
+﻿public enum Particles
+{
+	Collision = 0,
+	CommonExplosion = 1,
+	CommonExplosionBlue = 2,
+	BaseExplosion = 3,
+	Flash = 4,
+	GreenExplosion = 5,
+	LightExplosion = 6,
+	NukeLootExplosion = 7,
+	ShieldLootExplosion = 8,
+	StarExplosion = 9,
+	Thrust = 10,
+	TimeLootExplosion = 11,
+	WinLootExplosion = 12,
+	RegenBadge = 13,
+	UnlockBadge = 14,
+	ShieldBadge = 15,
+	PauseBadge = 16,
+}

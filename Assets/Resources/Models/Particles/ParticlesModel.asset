@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aea41bc8bcbea94a962f1f46cd248c0, type: 3}
+  m_Name: ParticlesModel
+  m_EditorClassIdentifier: 
+  ParticlesParams:
+  - ParticleId: 0
+    Particles: {fileID: 6066456671496075659, guid: 711616a487ed1c546bd42f3cbfb2316d, type: 3}
+    PoolSize: 50
+  - ParticleId: 1
+    Particles: {fileID: 3092276335953404868, guid: a6f4c4d6f1aef0543b9efa39c498373f, type: 3}
+    PoolSize: 20
+  - ParticleId: 2
+    Particles: {fileID: 3092276335953404868, guid: 30a3bb74ba13ac24b96bf557f0ce1081, type: 3}
+    PoolSize: 5
+  - ParticleId: 3
+    Particles: {fileID: 3092276335953404868, guid: 0bf77ff273d1c2d4e8245f127c0cf3d8, type: 3}
+    PoolSize: 20
+  - ParticleId: 4
+    Particles: {fileID: 5685834607789221023, guid: b49f1f5d64220ef4b98148eaecfcbe97, type: 3}
+    PoolSize: 20
+  - ParticleId: 5
+    Particles: {fileID: 3092276335953404868, guid: aa2f734ee2b99b9479dbec1e83006ec5, type: 3}
+    PoolSize: 20
+  - ParticleId: 6
+    Particles: {fileID: 3092276335953404868, guid: a1788557b0139d9489f3e70eb4a253cf, type: 3}
+    PoolSize: 10
+  - ParticleId: 7
+    Particles: {fileID: 7150406569097875020, guid: 4f24677bd2f74ee449007c5f49f16121, type: 3}
+    PoolSize: 5
+  - ParticleId: 8
+    Particles: {fileID: 7150406569097875020, guid: 9e9115f47fbf3e94eb48b851c821ed79, type: 3}
+    PoolSize: 5
+  - ParticleId: 9
+    Particles: {fileID: 3092276335953404868, guid: 8186dbe09f0f16a47a361bcc09745eb1, type: 3}
+    PoolSize: 6
+  - ParticleId: 10
+    Particles: {fileID: 2930051885296879699, guid: 1a28ba0c12e646d49b640888cfc463c8, type: 3}
+    PoolSize: 2
+  - ParticleId: 11
+    Particles: {fileID: 7150406569097875020, guid: 2464cffb98c8c424084bf8ef04246ac1, type: 3}
+    PoolSize: 5
+  - ParticleId: 12
+    Particles: {fileID: 7150406569097875020, guid: 595e7a8dd250556479ee11435703676c, type: 3}
+    PoolSize: 5
+  - ParticleId: 13
+    Particles: {fileID: 7068840588133368419, guid: cd645aa25c9617d469bf117a051eb1bf, type: 3}
+    PoolSize: 5
+  - ParticleId: 14
+    Particles: {fileID: 7068840588133368419, guid: 5714e48aaf52d93499ade5206bd24d41, type: 3}
+    PoolSize: 5
+  - ParticleId: 15
+    Particles: {fileID: 8540370022226107433, guid: af6706b7a3ea5c047aadd7a08cf45051, type: 3}
+    PoolSize: 5
+  - ParticleId: 16
+    Particles: {fileID: 7068840588133368419, guid: 2f36c364513c4b74a87980a4859ad359, type: 3}
+    PoolSize: 5

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be282863ba867e848890ff266e0d4bab, type: 3}
+  m_Name: DemoSoundsModel
+  m_EditorClassIdentifier: 
+  GlobalVolume: 1
+  MusicsVolume: 0.25
+  SoundsVolume: 0.5
+  BusyBeat: {fileID: 8300000, guid: 9533780b8d540464caa98cbe51f42b87, type: 3}
+  DigitalStroll: {fileID: 8300000, guid: a6a7430fa8363b346ae4b2e63f6697a2, type: 3}
+  MileHigh: {fileID: 0}
+  SadPast: {fileID: 0}
+  SpaceDifficulties: {fileID: 0}
+  SpaceUtopia: {fileID: 0}
+  SpringDay: {fileID: 0}
+  Stinger: {fileID: 0}
+  StormChasers: {fileID: 0}
+  SubterraneanMonster: {fileID: 0}
+  SwampChase: {fileID: 0}
+  TractorPull: {fileID: 0}
+  WhichWayIsUp: {fileID: 0}
+  Bonus: {fileID: 8300000, guid: 701e8893d9fb8834bbb0dcb41df43631, type: 3}
+  Collision1: {fileID: 8300000, guid: 921d323b4894c9b43980252189030224, type: 3}
+  Collision2: {fileID: 8300000, guid: 587805d0d3e1b2c4680d1f08c87099b8, type: 3}
+  Collision3: {fileID: 8300000, guid: e5e10cb9513d8a64a9f126a5e170a15c, type: 3}
+  Collision4: {fileID: 8300000, guid: 63e5d0ecb1248564f9da346f838393a9, type: 3}
+  Collision5: {fileID: 8300000, guid: 4696c40ade7912743b6c0dadf6bb4f3d, type: 3}
+  Explosion1: {fileID: 8300000, guid: 2fd6e4c30f7da144cb2116b250c56aaf, type: 3}
+  Explosion2: {fileID: 8300000, guid: bae3b416aaa6efa4e8b09f123e29e508, type: 3}
+  Explosion3: {fileID: 8300000, guid: 367b41d73fb56f442a7a00f90608c66d, type: 3}
+  PowerUp: {fileID: 8300000, guid: acb07976be965e740b960df8a3cb3954, type: 3}
+  Regen: {fileID: 8300000, guid: 5263cbaa056047c4299b56ca7f0825a1, type: 3}
+  CountdownAlert: {fileID: 8300000, guid: ad3ed6916d101584d9427aa0cd0f068b, type: 3}
+  CountdownFinal: {fileID: 8300000, guid: d7dbbc4fb0e5e1046b85aaaf0f9f8b5f, type: 3}
+  Fail: {fileID: 8300000, guid: 541b1e6194f0041428cb0668b037dc56, type: 3}
+  Victory: {fileID: 8300000, guid: 121380f1d04536945a1fdf4eb8202d94, type: 3}
+  ShieldStartBonus: {fileID: 8300000, guid: 2d61ddac5e10ccc46b1a514fad9a2aef, type: 3}
+  ShieldLoopBonus: {fileID: 8300000, guid: a3ccffdb58bb6d440a61f4b3d5a21179, type: 3}
+  ShieldEndBonus: {fileID: 8300000, guid: a5c722794099f7548aeb7da9a238feef, type: 3}
+  TimeBonus: {fileID: 8300000, guid: 9c10828a09df06b45a41f2508a7363e7, type: 3}
+  NukeBonus: {fileID: 8300000, guid: 88e9217a0ff3ad44db5a64ec6c9fc10c, type: 3}
+  Star: {fileID: 8300000, guid: 2bf570c87e2f1eb4d9b32cf1dbd971cc, type: 3}
+  Machine4: {fileID: 8300000, guid: a687c5aea628627469471a891746889d, type: 3}

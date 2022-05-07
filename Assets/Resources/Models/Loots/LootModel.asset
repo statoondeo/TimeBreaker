@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde027879ffa59642a6acc7f7b36897a, type: 3}
+  m_Name: LootModel
+  m_EditorClassIdentifier: 
+  LootRate: 0
+  PreLoad: 20
+  RechargeTime: 0
+  Loots:
+  - LootPrefab: {fileID: 549832248455982427, guid: c393a7d05dde649418239f35741a8ae0, type: 3}
+    LootRate: 1
+    LootThreshold: 0.001
+  - LootPrefab: {fileID: 549832248455982427, guid: 9837ccc136b47ab429dcf6c3b271c55b, type: 3}
+    LootRate: 250
+    LootThreshold: 0.251
+  - LootPrefab: {fileID: 549832248455982427, guid: e1fb162c280afd74396caeb4df37be24, type: 3}
+    LootRate: 250
+    LootThreshold: 0.501
+  - LootPrefab: {fileID: 549832248455982427, guid: 5ca32a29dbada754a8021f5fc4fcd0ed, type: 3}
+    LootRate: 249
+    LootThreshold: 0.751
+  - LootPrefab: {fileID: 9008432110029407890, guid: 52b16f4bfcaa51c458ab246763e289b1, type: 3}
+    LootRate: 250
+    LootThreshold: 1

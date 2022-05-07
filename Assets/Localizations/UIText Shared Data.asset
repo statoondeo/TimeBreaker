@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UIText Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UIText
+  m_TableCollectionNameGuidString: 2ac7cbb548de8604b8258441a4dd5245
+  m_Entries:
+  - m_Id: 585271496704
+    m_Key: BuyButtonText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1257870086144
+    m_Key: SettingsTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1506973995008
+    m_Key: GraphicSection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1861979885568
+    m_Key: SoundSection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2101722107904
+    m_Key: SpecialEffect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2345939652608
+    m_Key: QualityLevel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23796633718784
+    m_Key: LowQuality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24060266696704
+    m_Key: MiddleQuality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24305511845888
+    m_Key: HighQuality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24495429931008
+    m_Key: MaxQuality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27455983603712
+    m_Key: SoundSectio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27634082140160
+    m_Key: GlobalVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27854903857152
+    m_Key: MusicsVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28001025019904
+    m_Key: SoundsVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29226793586688
+    m_Key: LevelSelectionTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29397912801280
+    m_Key: Summary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29579488415744
+    m_Key: "BestTime\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29719041298432
+    m_Key: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29865187627008
+    m_Key: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29969223143424
+    m_Key: VictoyTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30115033927680
+    m_Key: DefeatTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30379862282240
+    m_Key: ShopTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31191334277120
+    m_Key: NoData
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348285351383040
+    m_Key: BuyText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348845739757568
+    m_Key: BuyButtonTex
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1443383057207296
+    m_Key: TimeoutTitle
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1650623373875
