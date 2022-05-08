@@ -19,7 +19,7 @@ MonoBehaviour:
   GoldTimer: 27578
   SilverTimer: 40977
   BronzeTimer: 54377
-  SuccessTimer: 81176
+  SuccessTimer: 107975
   BallModel:
     BrickPrefab: Prefabs/Balls/InitialBall
     SetupCurve:

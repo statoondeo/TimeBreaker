@@ -15,11 +15,11 @@ MonoBehaviour:
   Id: 32001144-4611-45a3-bd27-21fb1d6d7579
   Name: Level 15
   Number: 15
-  BestTimer: 23150
+  BestTimer: 52539
   GoldTimer: 20357
   SilverTimer: 28403
   BronzeTimer: 36448
-  SuccessTimer: 52539
+  SuccessTimer: 68630
   BallModel:
     BrickPrefab: Prefabs/Balls/InitialBall
     SetupCurve:

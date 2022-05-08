@@ -6,10 +6,9 @@ public class GameManager : Singleton<GameManager>
 {
 	private static readonly string PREFAB_PATH = "Prefabs/Managers/GameManager";
 
-	[SerializeField] private GameModel DemoGameModel;
-	[SerializeField] private GameModel CompleteGameModel;
-	[SerializeField] private bool StartComplete;
+	[SerializeField] private GameModel GameModel;
 
+	[HideInInspector] public bool IsCompleteMode;
 	[HideInInspector] public LevelsTimesSaver LevelsTimesSaver;
 	[HideInInspector] public EventsService EventsService;
 	[HideInInspector] public ParticlesService ParticlesService;
@@ -19,8 +18,7 @@ public class GameManager : Singleton<GameManager>
 	[HideInInspector] public LootService LootService;
 	[HideInInspector] public BackgroundsService BackgroundsService;
 	[HideInInspector] public IAPService IAPService;
-
-	private GameModel CurrentGameModel;
+	[HideInInspector] public AdsService AdsService;
 
 	public static GameObject Instantiate() => Instantiate(Resources.Load(PREFAB_PATH)) as GameObject;
 
@@ -40,40 +38,22 @@ public class GameManager : Singleton<GameManager>
 		EventsService = new EventsService();
 
 		IAPService = gameObject.AddComponent<IAPService>();
+		AdsService = gameObject.AddComponent<AdsService>();
 
-		ChangeModel(StartComplete ? CompleteGameModel : DemoGameModel);
-	}
-
-	private void OnEnable() => EventsService.Register(Events.OnSceneRequested, OnSceneRequestedCallback);
-
-	private void OnDestroy() => EventsService.UnRegister(Events.OnSceneRequested, OnSceneRequestedCallback);
-
-	public void SwitchToDemoVersion() => ChangeModel(DemoGameModel);
-
-	public void SwitchToCompleteVersion() => ChangeModel(CompleteGameModel);
-
-	private void ChangeModel(GameModel gameModel)
-	{
-		if (null != OptionsService)
-		{
-			OptionsService.OnOptionsChanged -= SoundService.SetVolumes;
-			SoundService.StopMusic();
-		}
-
-		CurrentGameModel = gameModel;
-
-		ParticlesService = new ParticlesService(CurrentGameModel.ParticlesModel);
-		SoundService = new SoundService(CurrentGameModel.SoundsModel);
-		OptionsService = new OptionsService(CurrentGameModel.SoundsModel.GlobalVolume, CurrentGameModel.SoundsModel.MusicsVolume, CurrentGameModel.SoundsModel.SoundsVolume);
-		LevelService = new LevelService(CurrentGameModel.LevelCatalogModel);
-		LootService = new LootService(CurrentGameModel.ArcadeLootModel);
-		BackgroundsService = new BackgroundsService(CurrentGameModel.BackgroundCollectionModel);
+		ParticlesService = new ParticlesService(GameModel.ParticlesModel);
+		SoundService = new SoundService(GameModel.SoundsModel);
+		OptionsService = new OptionsService(GameModel.SoundsModel.GlobalVolume, GameModel.SoundsModel.MusicsVolume, GameModel.SoundsModel.SoundsVolume);
+		LevelService = new LevelService(GameModel.LevelCatalogModel);
+		LootService = new LootService(GameModel.ArcadeLootModel);
+		BackgroundsService = new BackgroundsService(GameModel.BackgroundCollectionModel);
 
 		SoundService.SetVolumes();
 		OptionsService.OnOptionsChanged += SoundService.SetVolumes;
 	}
 
-	public bool IsCompleteMode => CurrentGameModel.IsComplete;
+	private void OnEnable() => EventsService.Register(Events.OnSceneRequested, OnSceneRequestedCallback);
+
+	private void OnDestroy() => EventsService.UnRegister(Events.OnSceneRequested, OnSceneRequestedCallback);
 
 	private void OnSceneRequestedCallback(EventModelArg eventArg) => LoadScene((eventArg as OnSceneRequestedEventArg).Scene);
 

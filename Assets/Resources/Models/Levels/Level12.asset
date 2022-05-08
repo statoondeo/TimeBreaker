@@ -15,11 +15,11 @@ MonoBehaviour:
   Id: 44452ed7-25d2-49b4-a263-f8441b0cd75f
   Name: Level 12
   Number: 12
-  BestTimer: 16876
+  BestTimer: 73533
   GoldTimer: 14254
   SilverTimer: 29074
   BronzeTimer: 43893
-  SuccessTimer: 73533
+  SuccessTimer: 103173
   BallModel:
     BrickPrefab: Prefabs/Balls/InitialBall
     SetupCurve:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -162,17 +163,20 @@ public class LevelController : MonoBehaviour
 
 	public void OnMenuClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 
-	public void OnSelectionClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Selection });
+	public void OnSelectionClick() => StartCoroutine(GotoNextScene(GotoSelection));
 
-	public void OnRetryClick() => StartCoroutine(GotoNextScene());
+	public void OnRetryClick() => StartCoroutine(GotoNextScene(GotoGameplay));
 
 	public void OnShopClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Shop });
 
-	public void OnContinueClick() => StartCoroutine(GotoNextScene());
+	public void OnContinueClick() => StartCoroutine(GotoNextScene(GotoGameplay));
 
-	private IEnumerator GotoNextScene()
+	private IEnumerator GotoNextScene(Action callback)
 	{
 		yield return (new WaitForSeconds(.1f));
-		GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Gameplay });
+		GameManager.Instance.AdsService.ShowAd(callback);
 	}
+
+	private void GotoGameplay() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Gameplay });
+	private void GotoSelection() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Selection });
 }

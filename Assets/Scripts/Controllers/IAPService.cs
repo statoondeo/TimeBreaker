@@ -7,7 +7,6 @@ public class IAPService : MonoBehaviour, IStoreListener
 	private static readonly string ProductID = "fullversionproduct";
 
 	private IStoreController Controller;
-	//private IExtensionProvider Extensions;
 
 	public bool Initialized { get; private set; }
 	public string PriceLabel { get; private set; }
@@ -29,7 +28,7 @@ public class IAPService : MonoBehaviour, IStoreListener
 
 	public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
 	{
-		GameManager.Instance.SwitchToCompleteVersion();
+		GameManager.Instance.IsCompleteMode = true;
 		GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 		return (PurchaseProcessingResult.Complete);
 	}
@@ -40,7 +39,7 @@ public class IAPService : MonoBehaviour, IStoreListener
 	{
 		Controller = controller;
 		Product product = Controller.products.WithID(ProductID);
-		if ((null != product) && product.hasReceipt) GameManager.Instance.SwitchToCompleteVersion();
+		GameManager.Instance.IsCompleteMode = (null != product) && product.hasReceipt;
 		PriceLabel = product.metadata.localizedPriceString;
 		Initialized = true;
 		GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });

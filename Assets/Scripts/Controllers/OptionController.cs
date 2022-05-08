@@ -18,8 +18,7 @@ public class OptionController : MonoBehaviour
 	[SerializeField] private float EffectDelay = 0.5f;
 
 	private WaitForSeconds WaitForSeconds;
-	private bool CanPlayEffect = true;
-	private bool ScreenEnabled = false;
+	private bool CanPlayEffect = false;
 	private LocalizeStringEvent QualityTextLocalized;
 
 	private void Awake()
@@ -37,15 +36,9 @@ public class OptionController : MonoBehaviour
 		MusicVolume.value = GameManager.Instance.OptionsService.MusicVolume;
 		EffectVolume.value = GameManager.Instance.OptionsService.EffectVolume;
 
-		PostProcessingToggle.interactable = GameManager.Instance.IsCompleteMode;
-		QualitySlider.interactable = GameManager.Instance.IsCompleteMode;
-		GlobalVolume.interactable = GameManager.Instance.IsCompleteMode;
-		MusicVolume.interactable = GameManager.Instance.IsCompleteMode;
-		EffectVolume.interactable = GameManager.Instance.IsCompleteMode;
-
 		OnQualitySliderChanged(QualitySlider.value);
 
-		ScreenEnabled = true;
+		CanPlayEffect = true;
 	}
 
 	public void OnBackClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
@@ -83,7 +76,7 @@ public class OptionController : MonoBehaviour
 	public void OnEffectVolumeChanged(float newValue)
 	{
 		GameManager.Instance.OptionsService.EffectVolume = (int)newValue;
-		if (ScreenEnabled && CanPlayEffect) StartCoroutine(PlayEffectRoutine());
+		if (CanPlayEffect) StartCoroutine(PlayEffectRoutine());
 	}
 
 	private IEnumerator PlayEffectRoutine()

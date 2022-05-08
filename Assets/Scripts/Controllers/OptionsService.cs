@@ -11,7 +11,7 @@ public class OptionsService
 	{
 		PipelineAsset = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
 
-		PostProcessing = PlayerPrefs.GetInt("PostProcessing", 0) == 1;
+		PostProcessing = PlayerPrefs.GetInt("PostProcessing", 1) == 1;
 		GraphicQuality = PlayerPrefs.GetInt("Quality", 1);
 
 		GlobalVolume = PlayerPrefs.GetInt("Global", (int)(globalVolume * 100));

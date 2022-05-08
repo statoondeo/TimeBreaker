@@ -15,11 +15,11 @@ MonoBehaviour:
   Id: 19b048d1-13f3-4f59-8237-d06d0e295a9e
   Name: Level 14
   Number: 14
-  BestTimer: 26442
+  BestTimer: 44319
   GoldTimer: 26045
   SilverTimer: 30613
   BronzeTimer: 35182
-  SuccessTimer: 44319
+  SuccessTimer: 53457
   BallModel:
     BrickPrefab: Prefabs/Balls/InitialBall
     SetupCurve:

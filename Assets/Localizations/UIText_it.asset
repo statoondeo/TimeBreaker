@@ -20,8 +20,7 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 585271496704
-    m_Localized: Acquista la versione completa per ottenere sfondi, livelli, bottini
-      e musiche aggiuntivi
+    m_Localized: Acquista la versione completa per rimuovere gli annunci
     m_Metadata:
       m_Items:
       - id: 0
@@ -114,8 +113,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 348285351383040
-    m_Localized: "Versi\xF3n completa que incluye\r\n\n* 13 m\xFAsicas\r\n* 4 botines\r\n*
-      24 niveles\r\n* 15 fondos"
+    m_Localized: Vollversion zum Entfernen von Werbung
     m_Metadata:
       m_Items: []
   - m_Id: 348845739757568

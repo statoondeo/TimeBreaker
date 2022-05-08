@@ -15,11 +15,11 @@ MonoBehaviour:
   Id: bdc2e0ee-7e1a-4677-86a7-eec163fa3071
   Name: Level 16
   Number: 16
-  BestTimer: 35112
+  BestTimer: 63317
   GoldTimer: 31789
   SilverTimer: 39671
   BronzeTimer: 47553
-  SuccessTimer: 63317
+  SuccessTimer: 79081
   BallModel:
     BrickPrefab: Prefabs/Balls/InitialBall
     SetupCurve:

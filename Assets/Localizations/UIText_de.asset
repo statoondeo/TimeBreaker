@@ -20,8 +20,7 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 585271496704
-    m_Localized: "Kaufen Sie die Vollversion, um zus\xE4tzliche Hintergr\xFCnde,
-      Levels, Beute und Musik zu erhalten"
+    m_Localized: Kaufen Sie die Vollversion, um Werbung zu entfernen
     m_Metadata:
       m_Items:
       - id: 0
@@ -114,8 +113,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 348285351383040
-    m_Localized: "Vollversion inkl\r\n\n* 13 Musiken\r\n* 4 Beute\r\n* 24 Stufen\r\n*
-      15 Hintergr\xFCnde"
+    m_Localized: Vollversion zum Entfernen von Werbung
     m_Metadata:
       m_Items: []
   - m_Id: 348845739757568

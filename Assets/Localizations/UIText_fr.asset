@@ -20,8 +20,7 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 585271496704
-    m_Localized: "Achetez la version compl\xE8te pour obtenir des arri\xE8re-plans,
-      des niveaux, des butins et des musiques suppl\xE9mentaires"
+    m_Localized: "Achetez la version compl\xE8te pour supprimer les publicit\xE9s"
     m_Metadata:
       m_Items:
       - id: 0
@@ -114,8 +113,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 348285351383040
-    m_Localized: "Version compl\xE8te comprenant\r\n\n* 13 musiques\r\n* 4 butins\r\n*
-      24 niveaux\r\n* 15 arri\xE8re-plans"
+    m_Localized: "Version compl\xE8te pour supprimer les publicit\xE9s"
     m_Metadata:
       m_Items: []
   - m_Id: 348845739757568

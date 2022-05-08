@@ -20,8 +20,7 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 585271496704
-    m_Localized: "Compre la versi\xF3n completa para obtener fondos, niveles, botines
-      y m\xFAsicas adicionales"
+    m_Localized: "Compre la versi\xF3n completa para eliminar anuncios"
     m_Metadata:
       m_Items:
       - id: 0
@@ -114,17 +113,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 348285351383040
-    m_Localized: 'Versione completa inclusa
-
-
-      * 13 musiche
-
-      * 4 bottini
-
-      *
-      24 livelli
-
-      * 15 sfondi'
+    m_Localized: "Versi\xF3n completa para eliminar anuncios"
     m_Metadata:
       m_Items: []
   - m_Id: 348845739757568

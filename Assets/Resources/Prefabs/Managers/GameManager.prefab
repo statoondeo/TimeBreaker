@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45bae163ffb99947a85c1d0b2eb4747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DemoGameModel: {fileID: 11400000, guid: 13e251d9fe8627949a43bac4db6a1ca6, type: 2}
-  CompleteGameModel: {fileID: 11400000, guid: a2ae53aaf1101844a9016e110720b420, type: 2}
-  StartComplete: 0
+  GameModel: {fileID: 11400000, guid: a2ae53aaf1101844a9016e110720b420, type: 2}
+  IAPService: {fileID: 0}
+  AdsService: {fileID: 0}
+  IsCompleteMode: 0
