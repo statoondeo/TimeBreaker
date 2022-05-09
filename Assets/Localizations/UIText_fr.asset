@@ -124,6 +124,26 @@ MonoBehaviour:
     m_Localized: "Temps \xE9coul\xE9"
     m_Metadata:
       m_Items: []
+  - m_Id: 6175383718612992
+    m_Localized: "Sensibilit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175656306429952
+    m_Localized: "Contr\xF4les"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175894291238912
+    m_Localized: Basse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175897663459328
+    m_Localized: Moyenne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175899949355008
+    m_Localized: Haute
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

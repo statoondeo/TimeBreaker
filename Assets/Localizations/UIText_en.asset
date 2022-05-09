@@ -124,6 +124,26 @@ MonoBehaviour:
     m_Localized: Time Out
     m_Metadata:
       m_Items: []
+  - m_Id: 6175383718612992
+    m_Localized: Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175656306429952
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175894291238912
+    m_Localized: Low
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175897663459328
+    m_Localized: Middle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175899949355008
+    m_Localized: High
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

@@ -17,6 +17,8 @@ public class OptionsService
 		GlobalVolume = PlayerPrefs.GetInt("Global", (int)(globalVolume * 100));
 		MusicVolume = PlayerPrefs.GetInt("Music", (int)(musicsVolume * 100));
 		EffectVolume = PlayerPrefs.GetInt("Effect", (int)(soundsVolume * 100));
+
+		Sensibility = PlayerPrefs.GetInt("Sensibility", 1);
 	}
 
 	public event Action OnOptionsChanged;
@@ -37,7 +39,7 @@ public class OptionsService
 		}
 	}
 
-	public int _Quality;
+	private int _Quality;
 	public int GraphicQuality
 	{
 		get => _Quality;
@@ -74,7 +76,7 @@ public class OptionsService
 		}
 	}
 
-	public int _Global;
+	private int _Global;
 	public int GlobalVolume
 	{
 		get => _Global;
@@ -89,7 +91,7 @@ public class OptionsService
 		}
 	}
 
-	public int _Music;
+	private int _Music;
 	public int MusicVolume
 	{
 		get => _Music;
@@ -104,7 +106,7 @@ public class OptionsService
 		}
 	}
 
-	public int _Effect;
+	private int _Effect;
 	public int EffectVolume
 	{
 		get => _Effect;
@@ -118,4 +120,21 @@ public class OptionsService
 			}
 		}
 	}
+
+	private int _Sensibility;
+	public int Sensibility
+	{
+		get => _Sensibility;
+		set
+		{
+			if (_Sensibility != value)
+			{
+				_Sensibility = value;
+				PlayerPrefs.SetInt("Sensibility", _Sensibility);
+				OnOptionsChanged?.Invoke();
+			}
+		}
+	}
+
+	public float SensitivityLevel => 1 + Sensibility * 0.5f;
 }

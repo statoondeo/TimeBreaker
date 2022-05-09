@@ -124,6 +124,26 @@ MonoBehaviour:
     m_Localized: Tempo trascorso
     m_Metadata:
       m_Items: []
+  - m_Id: 6175383718612992
+    m_Localized: "Sensibilit\xE0"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175656306429952
+    m_Localized: Controlli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175894291238912
+    m_Localized: Basso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175897663459328
+    m_Localized: Mezza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175899949355008
+    m_Localized: Alta
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

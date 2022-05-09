@@ -14,18 +14,22 @@ public class OptionController : MonoBehaviour
 	[SerializeField] private Slider GlobalVolume;
 	[SerializeField] private Slider MusicVolume;
 	[SerializeField] private Slider EffectVolume;
+	[SerializeField] private Slider SensibilitySlider;
 	[SerializeField] private TextMeshProUGUI QualityText;
+	[SerializeField] private TextMeshProUGUI SensibilityText;
 	[SerializeField] private float EffectDelay = 0.5f;
 
 	private WaitForSeconds WaitForSeconds;
 	private bool CanPlayEffect = false;
 	private LocalizeStringEvent QualityTextLocalized;
+	private LocalizeStringEvent SensibilityTextLocalized;
 
 	private void Awake()
 	{
 		BuyButton.SetActive(GameManager.Instance.IAPService.IsBuyButtonActivated);
 		WaitForSeconds = new WaitForSeconds(EffectDelay);
 		QualityTextLocalized = QualityText.GetComponent<LocalizeStringEvent>();
+		SensibilityTextLocalized = SensibilityText.GetComponent<LocalizeStringEvent>();
 	}
 
 	private void Start()
@@ -35,6 +39,7 @@ public class OptionController : MonoBehaviour
 		GlobalVolume.value = GameManager.Instance.OptionsService.GlobalVolume;
 		MusicVolume.value = GameManager.Instance.OptionsService.MusicVolume;
 		EffectVolume.value = GameManager.Instance.OptionsService.EffectVolume;
+		SensibilitySlider.value = GameManager.Instance.OptionsService.Sensibility;
 
 		OnQualitySliderChanged(QualitySlider.value);
 
@@ -44,6 +49,26 @@ public class OptionController : MonoBehaviour
 	public void OnBackClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 
 	public void OnPostProcessingToggleChanged(bool newValue) => GameManager.Instance.OptionsService.PostProcessing = newValue;
+
+	public void OnSensibilitySliderChanged(float newValue)
+	{
+		GameManager.Instance.OptionsService.Sensibility = (int)newValue;
+		switch (GameManager.Instance.OptionsService.Sensibility)
+		{
+			case 0:
+				SensibilityTextLocalized.SetEntry("LowSensitivity");
+				break;
+
+			case 1:
+				SensibilityTextLocalized.SetEntry("MiddleSensitivity");
+				break;
+
+			case 2:
+				SensibilityTextLocalized.SetEntry("HighSensitivity");
+				break;
+		}
+		SensibilityTextLocalized.RefreshString();
+	}
 
 	public void OnQualitySliderChanged(float newValue)
 	{

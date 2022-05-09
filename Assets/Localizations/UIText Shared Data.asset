@@ -119,6 +119,26 @@ MonoBehaviour:
     m_Key: TimeoutTitle
     m_Metadata:
       m_Items: []
+  - m_Id: 6175383718612992
+    m_Key: SensitivityLevel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175656306429952
+    m_Key: ControlSection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175894291238912
+    m_Key: LowSensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175897663459328
+    m_Key: MiddleSensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6175899949355008
+    m_Key: HighSensitivity
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -10,6 +10,7 @@ public class PaddleController : MonoBehaviour
 	private Vector3 InitialScale;
 	private Vector3 TargetScale;
 	private PaddlePhysicController PaddlePhysicController;
+	private float Sensitivity;
 
 	[SerializeField] private float Bounds;
 	[SerializeField] private Particles CollisionParticles;
@@ -26,6 +27,7 @@ public class PaddleController : MonoBehaviour
 		InitialScale = transform.localScale;
 		TargetScale = new Vector3(InitialScale.x * ZoomFactor, InitialScale.y * ZoomFactor, 1.0f);
 		PaddlePhysicController = GetComponent<PaddlePhysicController>();
+		Sensitivity = GameManager.Instance.OptionsService.SensitivityLevel;
 	}
 
 	private void OnEnable()
@@ -50,7 +52,7 @@ public class PaddleController : MonoBehaviour
 
 		Vector2 position = context.ReadValue<Vector2>();
 		Vector3 newPosition = MainCamera.ScreenToWorldPoint(new Vector3(position.x, position.y));
-		transform.position = new Vector3(Mathf.Clamp(newPosition.x, -Bounds, Bounds), transform.position.y, transform.position.z);
+		transform.position = new Vector3(Mathf.Clamp(newPosition.x * Sensitivity, -Bounds, Bounds), transform.position.y, transform.position.z);
 	}
 
 	private void Start() => GameManager.Instance.EventsService.Raise(Events.OnPaddlePopped, new OnPaddlePoppedEventArg() { PaddleController = this });
