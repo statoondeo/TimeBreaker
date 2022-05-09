@@ -7,8 +7,6 @@ public class IndestructibleBrickController : MonoBehaviour
 {
 	[SerializeField] private Particles CollisionParticles;
 	[SerializeField] private Clips CollisionSound;
-	[SerializeField] private float ZoomFactor = 2f;
-	[SerializeField] private float ZoomDuration = 1.5f;
 
 	private BlinkerController BlinkerController;
 

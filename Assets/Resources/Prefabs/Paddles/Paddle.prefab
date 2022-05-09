@@ -49,13 +49,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f1f90cf42f62c4e8add217f28ff19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sensitivity: 0.01
   Bounds: 2
   CollisionParticles: 0
   DestroyParticles: 2
   CollisionSound: 1
   ExplosionSound: 6
   ZoomFactor: 0.25
+  TouchPosition:
+    m_Name: Touch Position
+    m_Type: 2
+    m_ExpectedControlType: Vector2
+    m_Id: c5e0ae26-b485-480b-b7ac-fc725fcada2a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b39968c8-988a-4bb8-9bfb-29bf5db2d2dc
+      m_Path: <Touchscreen>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Touch Position
+      m_Flags: 0
+    - m_Name: 
+      m_Id: c0863b32-7b4f-4c36-9394-193b343c3617
+      m_Path: <Mouse>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Touch Position
+      m_Flags: 0
+    m_Flags: 0
 --- !u!212 &672749427422932408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -145,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ece745dffc8274a8e07441b5c9cef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Precision: 5
   Amplitude: 5
   Bounciness: 3
 --- !u!1001 &4091893427185317369

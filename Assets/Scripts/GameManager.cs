@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
 	[HideInInspector] public BackgroundsService BackgroundsService;
 	[HideInInspector] public IAPService IAPService;
 	[HideInInspector] public AdsService AdsService;
+	[HideInInspector] public InputService InputService;
 
 	public static GameObject Instantiate() => Instantiate(Resources.Load(PREFAB_PATH)) as GameObject;
 
@@ -39,6 +40,7 @@ public class GameManager : Singleton<GameManager>
 
 		IAPService = gameObject.AddComponent<IAPService>();
 		AdsService = gameObject.AddComponent<AdsService>();
+		InputService = gameObject.AddComponent<InputService>();
 
 		ParticlesService = new ParticlesService(GameModel.ParticlesModel);
 		SoundService = new SoundService(GameModel.SoundsModel);

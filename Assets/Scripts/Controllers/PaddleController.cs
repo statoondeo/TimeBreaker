@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static EventsService;
 using static SoundService;
 
@@ -10,13 +11,14 @@ public class PaddleController : MonoBehaviour
 	private Vector3 TargetScale;
 	private PaddlePhysicController PaddlePhysicController;
 
-	[SerializeField, Range(.005f, .015f)] private float Sensitivity = .01f;
 	[SerializeField] private float Bounds;
 	[SerializeField] private Particles CollisionParticles;
 	[SerializeField] private Particles DestroyParticles;
 	[SerializeField] private Clips CollisionSound;
 	[SerializeField] private Clips ExplosionSound;
 	[SerializeField] private float ZoomFactor = 0.25f;
+
+	[SerializeField] private InputAction TouchPosition;
 
 	private void Awake()
 	{
@@ -30,33 +32,28 @@ public class PaddleController : MonoBehaviour
 	{
 		GameManager.Instance.EventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
 		GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+		TouchPosition.Enable();
+		TouchPosition.performed += OnPositionChanged;
 	}
 
 	private void OnDisable()
 	{
+		TouchPosition.performed -= OnPositionChanged;
+		TouchPosition.Disable();
 		GameManager.Instance.EventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
 		GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
 	}
 
-	private void Start() => GameManager.Instance.EventsService.Raise(Events.OnPaddlePopped, new OnPaddlePoppedEventArg() { PaddleController = this });
-
-	private void Update()
-	{
+	private void OnPositionChanged(InputAction.CallbackContext context)
+{
 		if (!Activated) return;
 
-		// TODO => Gestionnaire d'input, avec new input system pour utilisation de callbacks!
-		Vector3 newPosition;
-
-		if (Input.touchCount > 0)
-		{
-			newPosition = transform.position + Sensitivity * Input.touches[0].deltaPosition.x * Vector3.right;
-			transform.position = new Vector3(Mathf.Clamp(newPosition.x, -Bounds, Bounds), transform.position.y, transform.position.z);
-			return;
-		}
-
-		newPosition = MainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+		Vector2 position = context.ReadValue<Vector2>();
+		Vector3 newPosition = MainCamera.ScreenToWorldPoint(new Vector3(position.x, position.y));
 		transform.position = new Vector3(Mathf.Clamp(newPosition.x, -Bounds, Bounds), transform.position.y, transform.position.z);
 	}
+
+	private void Start() => GameManager.Instance.EventsService.Raise(Events.OnPaddlePopped, new OnPaddlePoppedEventArg() { PaddleController = this });
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
