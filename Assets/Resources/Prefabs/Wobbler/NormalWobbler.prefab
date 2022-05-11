@@ -7,17 +7,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 241519977904357359, guid: 1932686145b700541823e48f0da86121, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 241519977904357359, guid: 1932686145b700541823e48f0da86121, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 581674082698183270, guid: 1932686145b700541823e48f0da86121, type: 3}
-      propertyPath: FrameRate
-      value: 0.0625
+      propertyPath: AnimatorSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3009567018759353972, guid: 1932686145b700541823e48f0da86121, type: 3}
       propertyPath: m_Name
@@ -26,14 +18,6 @@ PrefabInstance:
     - target: {fileID: 3009567018759353975, guid: 1932686145b700541823e48f0da86121, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3009567018759353975, guid: 1932686145b700541823e48f0da86121, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3009567018759353975, guid: 1932686145b700541823e48f0da86121, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3009567018759353975, guid: 1932686145b700541823e48f0da86121, type: 3}
       propertyPath: m_LocalPosition.x

@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: StartingLife
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5083785655991565550, guid: 186d43ad59a657649b91b0f354f607b9, type: 3}
+      propertyPath: AnimatorSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7447713686778366204, guid: 186d43ad59a657649b91b0f354f607b9, type: 3}
       propertyPath: m_Name
       value: BigPyramid

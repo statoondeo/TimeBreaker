@@ -140,6 +140,15 @@ MonoBehaviour:
     m_Localized: Haute
     m_Metadata:
       m_Items: []
+  - m_Id: 6986525911175168
+    m_Localized: "Publicit\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6986840114876416
+    m_Localized: "Regarder une publicit\xE9 pour d\xE9bloquer le jeu complet pendant\r\n5
+      minutes"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

@@ -554,9 +554,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7126707387511088810}
   - component: {fileID: 7126707387511088811}
-  - component: {fileID: 7126707387511088812}
   - component: {fileID: 2084763941671466105}
   - component: {fileID: 6721081738202719344}
+  - component: {fileID: 1956672896568160313}
   m_Layer: 12
   m_Name: gas3
   m_TagString: Untagged
@@ -629,20 +629,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7126707387511088812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7126707387511088809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfb9a2ae05d757f45a1963930821870c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rotation: {x: 0, y: 0, z: 1}
-  Target: {fileID: 7126707387511088810}
 --- !u!114 &2084763941671466105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,9 +664,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d93d7eb8785854b9d04183bf72f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprites: []
-  FrameRate: 0
+  AnimatorSpeed: 0.05
   CurrentColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!95 &1956672896568160313
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7126707387511088809}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65580f7bba03e4449b1657493ffbeb8b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9127746493025577092
 GameObject:
   m_ObjectHideFlags: 0

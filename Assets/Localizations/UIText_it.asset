@@ -140,6 +140,15 @@ MonoBehaviour:
     m_Localized: Alta
     m_Metadata:
       m_Items: []
+  - m_Id: 6986525911175168
+    m_Localized: Annuncio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6986840114876416
+    m_Localized: "Guarda una pubblicit\xE0 per sbloccare il gioco completo durante\r\nCinque
+      minuti"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

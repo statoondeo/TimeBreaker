@@ -28,7 +28,8 @@ public class GameManager : Singleton<GameManager>
 		ServiceLocator.Register(new ParticlesService(GameModel.ParticlesModel));
 		SoundService soundService = ServiceLocator.Register(new SoundService(GameModel.SoundsModel));
 		OptionsService optionsService = ServiceLocator.Register(new OptionsService(GameModel.SoundsModel.GlobalVolume, GameModel.SoundsModel.MusicsVolume, GameModel.SoundsModel.SoundsVolume));
-		ServiceLocator.Register(new LevelService(GameModel.LevelCatalogModel));
+		LevelService levelService = ServiceLocator.Register(gameObject.AddComponent<LevelService>());
+		levelService.LevelCatalogModel = GameModel.LevelCatalogModel;
 		ServiceLocator.Register(new LootService(GameModel.ArcadeLootModel));
 		ServiceLocator.Register(new BackgroundsService(GameModel.BackgroundCollectionModel));
 

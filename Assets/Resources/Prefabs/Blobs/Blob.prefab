@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6065166336684816713}
   - component: {fileID: 5208278650091876231}
   - component: {fileID: 5203325400958232136}
+  - component: {fileID: 8776905473354081168}
   m_Layer: 6
   m_Name: Blob
   m_TagString: Untagged
@@ -101,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec458d163d5e8540a2042f2c7b5c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlinkTransitionDuration: 0.062
+  BlinkTransitionDuration: 0.0625
   BlinkDuration: 0.125
   BlinkColor: {r: 1, g: 0, b: 0.87976265, a: 1}
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
@@ -201,7 +202,27 @@ MonoBehaviour:
   - {fileID: -2112100204617039097, guid: 306d7e5774adc874081ce08d00023482, type: 3}
   - {fileID: -5859483881358130707, guid: 306d7e5774adc874081ce08d00023482, type: 3}
   FrameRate: 0.0625
+  AnimatorSpeed: 1
   CurrentColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!95 &8776905473354081168
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065166336684816719}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc6f5127f83df794c8a8ec8d7a6f59c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4938638588555449204
 PrefabInstance:
   m_ObjectHideFlags: 0

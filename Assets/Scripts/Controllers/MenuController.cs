@@ -22,9 +22,9 @@ public class MenuController : MonoBehaviour
 		GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Gameplay });
 	}
 
-	public void OnSelectClick() => GameManager.Instance.GetService<AdsService>().ShowAd(GotoSelection);
+	public void OnSelectClick() => GameManager.Instance.GetService<AdsService>().GotoNextScene(GotoSelection);
 
-	public void OnOptionClick() => GameManager.Instance.GetService<AdsService>().ShowAd(GotoOptions);
+	public void OnOptionClick() => GameManager.Instance.GetService<AdsService>().GotoNextScene(GotoOptions);
 
 	public void OnShopClick() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Shop });
 

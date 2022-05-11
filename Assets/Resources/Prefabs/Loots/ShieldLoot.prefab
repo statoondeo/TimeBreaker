@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5854870043715398212}
   - component: {fileID: 2929542938789259559}
   - component: {fileID: -6904638628001791772}
-  - component: {fileID: 2778191035394771713}
+  - component: {fileID: 1384701514464065209}
   m_Layer: 10
   m_Name: ShieldLoot
   m_TagString: Untagged
@@ -117,31 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d93d7eb8785854b9d04183bf72f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: 5453239743610533578, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 3615461256294904326, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 3994460477973945144, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: -7769758421137584224, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 6727538197168073950, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: -2513938878549049069, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 1956057792679491921, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 7827395757936596696, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 7926027443828744629, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 5516724691461166915, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 6791923716363741417, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 2547008982933966672, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 5457932148612838206, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: -6242052424396163030, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: -8649054826489669724, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 8235832298855554920, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: -4481604015633165315, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 5475102952456952548, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 2009752513534597879, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 2904842867533195663, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 3923886635897555609, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: 2874683915209383884, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  - {fileID: -6825570909516098766, guid: 88c0d52d01768c546bf0fab0f10d53e4, type: 3}
-  FrameRate: 0.025
+  AnimatorSpeed: 10
   CurrentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &5854870043715398212
 Rigidbody2D:
@@ -192,20 +168,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 3.5
   VerticalTolerance: 0.1
---- !u!114 &2778191035394771713
-MonoBehaviour:
+--- !u!95 &1384701514464065209
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549832248455982427}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfb9a2ae05d757f45a1963930821870c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rotation: {x: 0, y: 0, z: 360}
-  Target: {fileID: 549832248455982431}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65580f7bba03e4449b1657493ffbeb8b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8967170852837559621
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -179,7 +179,7 @@ public class LevelController : MonoBehaviour
 	private IEnumerator GotoNextScene(Action callback)
 	{
 		yield return (new WaitForSeconds(.1f));
-		GameManager.Instance.GetService<AdsService>().ShowAd(callback);
+		GameManager.Instance.GetService<AdsService>().GotoNextScene(callback);
 	}
 
 	private void GotoGameplay() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Gameplay });

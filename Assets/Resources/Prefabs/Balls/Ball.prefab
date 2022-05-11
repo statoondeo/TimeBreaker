@@ -4878,6 +4878,7 @@ GameObject:
   - component: {fileID: 6904161328243187894}
   - component: {fileID: 3061638844098955183}
   - component: {fileID: 1641887456465197170}
+  - component: {fileID: 6864172575115172570}
   m_Layer: 7
   m_Name: Ball
   m_TagString: Ball
@@ -5037,6 +5038,7 @@ MonoBehaviour:
   - {fileID: -4361190317759592519, guid: 10f2a00886a677643be77dababa30756, type: 3}
   - {fileID: -4442883204331134195, guid: 10f2a00886a677643be77dababa30756, type: 3}
   FrameRate: 0.0625
+  AnimatorSpeed: 1
   CurrentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &3061638844098955183
 MonoBehaviour:
@@ -5159,6 +5161,25 @@ LineRenderer:
     generateLightingData: 1
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!95 &6864172575115172570
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008432110029407890}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 59f9891856d0d1640b32d214ced2ef79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8353591093431114560
 PrefabInstance:
   m_ObjectHideFlags: 0

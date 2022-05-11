@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7852004894263155826}
   - component: {fileID: 7852004894263155836}
   - component: {fileID: 581674082698183270}
+  - component: {fileID: 8574414618737563489}
   m_Layer: 6
   m_Name: BigWobbler
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3009567018759353972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1462813799510794470}
   - {fileID: 1350220289397499919}
@@ -118,8 +119,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollisionParticles: 0
   CollisionSound: 2
-  ZoomFactor: 2
-  ZoomDuration: 1.5
   StartingLife: 8
   DestroyParticles: 3
   ExplosionSound: 4
@@ -135,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec458d163d5e8540a2042f2c7b5c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlinkTransitionDuration: 0.125
-  BlinkDuration: 0.25
+  BlinkTransitionDuration: 0.0625
+  BlinkDuration: 0.125
   BlinkColor: {r: 1, g: 0, b: 0, a: 1}
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &581674082698183270
@@ -169,8 +168,28 @@ MonoBehaviour:
   - {fileID: 572652396288338116, guid: 8e02abe832237de4f84429f4a026c7e0, type: 3}
   - {fileID: -8649630947463021329, guid: 8e02abe832237de4f84429f4a026c7e0, type: 3}
   - {fileID: 7751781537168418645, guid: 8e02abe832237de4f84429f4a026c7e0, type: 3}
-  FrameRate: 0.125
+  FrameRate: 0.0625
+  AnimatorSpeed: 0.8
   CurrentColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!95 &8574414618737563489
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3009567018759353972}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c09ec69e8ef500d4c9ef854fbf1606a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3994152568860082666
 PrefabInstance:
   m_ObjectHideFlags: 0

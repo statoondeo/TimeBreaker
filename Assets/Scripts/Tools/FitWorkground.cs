@@ -16,7 +16,10 @@ public class FitWorkground : MonoBehaviour
 		FitOrthographicSize();
 	}
 
-	private void Update() => FitOrthographicSize();
+// TODO
+//#if !UNITY_ANDROID
+//	private void LateUpdate() => FitOrthographicSize();
+//#endif
 
 	private void FitOrthographicSize()
 	{

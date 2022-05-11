@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5854870043715398212}
   - component: {fileID: 2929542938789259559}
   - component: {fileID: -8509634700572742140}
+  - component: {fileID: 6490206725006375935}
   m_Layer: 10
   m_Name: NukeLoot
   m_TagString: Untagged
@@ -116,24 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d93d7eb8785854b9d04183bf72f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: -1242187556347939975, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: -5098553625116132715, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: 3944467717068285107, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: 1985473040002665785, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: -3861820436332820454, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: -8560499709595991612, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: -1542439542604059776, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: -2749326933972015569, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: 4977740980428888419, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: -3445190388120019299, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: 7282136725554818836, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: 6575845312042955614, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: 5986733502284033168, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: -5966634133013923999, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: -490227262318828057, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  - {fileID: 7712932268299048646, guid: 49dc4a1d7be61bf48816641d1552b9bd, type: 3}
-  FrameRate: 0.025
+  AnimatorSpeed: 1
   CurrentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &5854870043715398212
 Rigidbody2D:
@@ -184,6 +168,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 3.5
   VerticalTolerance: 0.1
+--- !u!95 &6490206725006375935
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549832248455982427}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: adefa36aa24f715469a51a85e330a87d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8967170852837559621
 PrefabInstance:
   m_ObjectHideFlags: 0

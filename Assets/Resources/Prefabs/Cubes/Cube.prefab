@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: FrameRate
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 8899627291906056212, guid: 879fcc03bcafc3543a4797f6f76cb7db, type: 3}
+      propertyPath: AnimatorSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9210782673921739041, guid: 879fcc03bcafc3543a4797f6f76cb7db, type: 3}
       propertyPath: m_Name
       value: Cube

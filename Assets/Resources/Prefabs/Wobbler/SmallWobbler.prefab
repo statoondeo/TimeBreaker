@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: FrameRate
       value: 0.031
       objectReference: {fileID: 0}
+    - target: {fileID: 581674082698183270, guid: 1932686145b700541823e48f0da86121, type: 3}
+      propertyPath: AnimatorSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1350220289397499919, guid: 1932686145b700541823e48f0da86121, type: 3}
       propertyPath: m_LocalScale.x
       value: 1

@@ -135,6 +135,14 @@ MonoBehaviour:
     m_Key: HighSensitivity
     m_Metadata:
       m_Items: []
+  - m_Id: 6986525911175168
+    m_Key: Ad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6986840114876416
+    m_Key: ViewAd
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

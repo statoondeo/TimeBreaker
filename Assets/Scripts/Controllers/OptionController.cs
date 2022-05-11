@@ -43,6 +43,7 @@ public class OptionController : MonoBehaviour
 		SensibilitySlider.value = optionsService.Sensibility;
 
 		OnQualitySliderChanged(QualitySlider.value);
+		OnSensibilitySliderChanged(SensibilitySlider.value);
 
 		CanPlayEffect = true;
 	}

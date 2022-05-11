@@ -140,6 +140,15 @@ MonoBehaviour:
     m_Localized: Hoch
     m_Metadata:
       m_Items: []
+  - m_Id: 6986525911175168
+    m_Localized: Anzeige
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6986840114876416
+    m_Localized: "Sehen Sie sich eine Werbung an, um w\xE4hrenddessen das gesamte
+      Spiel freizuschalten\r\n5 Minuten"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

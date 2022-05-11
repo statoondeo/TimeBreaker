@@ -9,12 +9,12 @@ public class BlinkerController : MonoBehaviour
 	public Color BlinkColor = Color.red;
 
 	[HideInInspector] public Color OriginalColor;
-	private SpriteAnimator SpriteAnimator;
+	private SpriteColorAnimator SpriteAnimator;
 	private WaitForSeconds WaitForSeconds;
 
 	private void Awake()
 	{
-		SpriteAnimator = GetComponent<SpriteAnimator>();
+		SpriteAnimator = GetComponent<SpriteColorAnimator>();
 		OriginalColor = SpriteAnimator.CurrentColor;
 		WaitForSeconds = new WaitForSeconds(BlinkDuration);
 	}

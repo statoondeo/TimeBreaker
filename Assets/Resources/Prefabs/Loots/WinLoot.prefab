@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5854870043715398212}
   - component: {fileID: 2929542938789259559}
   - component: {fileID: 3695577899330044987}
+  - component: {fileID: 8950192681306582338}
   m_Layer: 10
   m_Name: WinLoot
   m_TagString: Untagged
@@ -116,25 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d93d7eb8785854b9d04183bf72f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: 3302273018506617863, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 954963436607154304, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: -4455476159343789129, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 6519960470705124959, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 52362372452818622, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 3810677228439233811, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: -3225272027129934318, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 2500226511144422677, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 4137319832174097565, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: -8007984669383512409, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 7868574776547157192, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 7226257249382138463, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 5679683644439689800, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: -2633415383295334788, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: -8550248566133898902, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 2134548243607875053, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  - {fileID: 3923119973304707197, guid: 834e228b94c21ca45bf2fc56dbcd0374, type: 3}
-  FrameRate: 0.025
+  AnimatorSpeed: 1
   CurrentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &5854870043715398212
 Rigidbody2D:
@@ -185,6 +168,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 3.5
   VerticalTolerance: 0.1
+--- !u!95 &8950192681306582338
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549832248455982427}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d47c2d6b81177614db693af31a2dee62, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &8967170852837559621
 PrefabInstance:
   m_ObjectHideFlags: 0

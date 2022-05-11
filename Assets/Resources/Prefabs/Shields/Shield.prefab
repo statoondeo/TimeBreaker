@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 067b6998e2e706e4080ed7e8a914a8e2, type: 3}
-  m_Color: {r: 0.96809244, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec458d163d5e8540a2042f2c7b5c8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlinkTransitionDuration: 0.125
-  BlinkDuration: 0.25
-  BlinkColor: {r: 1, g: 0, b: 0, a: 1}
+  BlinkTransitionDuration: 0.0625
+  BlinkDuration: 0.125
+  BlinkColor: {r: 0.96862745, g: 0, b: 1, a: 1}
   OriginalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &3152890486341578453
 MonoBehaviour:
@@ -114,9 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d93d7eb8785854b9d04183bf72f4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sprites:
-  - {fileID: 21300000, guid: 067b6998e2e706e4080ed7e8a914a8e2, type: 3}
-  FrameRate: 0.125
+  AnimatorSpeed: 0
   CurrentColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &727319297885346496
 MonoBehaviour:
@@ -130,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095eb10140d475948b6ccdac9806ff9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollisionParticles: {fileID: 6066456671496075659, guid: 711616a487ed1c546bd42f3cbfb2316d, type: 3}
+  CollisionParticles: 0
   CollisionSound: 3
 --- !u!58 &6510035036791585387
 CircleCollider2D:

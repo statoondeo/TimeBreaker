@@ -9,7 +9,8 @@ public class BootStrapper
 	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 	private static void OnRuntimeMethodLoad()
 	{
-		Application.targetFrameRate = 60;
+		// TODO
+		//Application.targetFrameRate = 60;
 
 		// Gestion du jeu
 		GameManager.Instantiate();

@@ -91,5 +91,9 @@ PrefabInstance:
       propertyPath: FrameRate
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8359877641936308075, guid: 4c8ecc74169378740bbc31879ffb5c5e, type: 3}
+      propertyPath: AnimatorSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c8ecc74169378740bbc31879ffb5c5e, type: 3}
