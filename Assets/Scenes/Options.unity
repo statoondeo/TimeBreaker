@@ -607,7 +607,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:2ac7cbb548de8604b8258441a4dd5245
     m_TableEntryReference:
-      m_KeyId: 27455983603712
+      m_KeyId: 1861979885568
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -4597,6 +4597,58 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Bound
       objectReference: {fileID: 0}
+    - target: {fileID: 1546098152005131612, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ada36babca6dbc349ac3ebac9fad0567, type: 3}
+    - target: {fileID: 1546098152005131612, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546098152005131612, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546098152005131612, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864631620148830860, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864631620148830860, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864631620148830860, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864631620148830860, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864631620148830860, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864631620148830860, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 8.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387199314633863510, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387199314633863510, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387199314633863510, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.96
+      objectReference: {fileID: 0}
     - target: {fileID: 7672563488507579327, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
       propertyPath: m_TagString
       value: Bound
@@ -4605,9 +4657,37 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Bound
       objectReference: {fileID: 0}
+    - target: {fileID: 7672563489697853172, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cf1ff018460629c4189d1e42e57df839, type: 3}
+    - target: {fileID: 7672563489697853172, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672563489697853172, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672563489697853172, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7672563489697853174, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
       propertyPath: m_TagString
       value: Bound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672563489697853175, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672563489697853175, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672563489697853175, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.96
       objectReference: {fileID: 0}
     - target: {fileID: 7672563490247322320, guid: bca099d33a8bd924685cbb6b2fa37e3e, type: 3}
       propertyPath: m_TagString

@@ -26,24 +26,26 @@ public class TimerController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		GameManager.Instance.EventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnBallsEnded, OnBallsEndedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnBricksEnded, OnBricksEndedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnLevelSetupStarted, OnLevelSetupStartedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnTimerPaused, OnTimerPausedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnTimerResume, OnTimerResumeCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
+		eventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+		eventsService.Register(Events.OnBallsEnded, OnBallsEndedCallback);
+		eventsService.Register(Events.OnBricksEnded, OnBricksEndedCallback);
+		eventsService.Register(Events.OnLevelSetupStarted, OnLevelSetupStartedCallback);
+		eventsService.Register(Events.OnTimerPaused, OnTimerPausedCallback);
+		eventsService.Register(Events.OnTimerResume, OnTimerResumeCallback);
 	}
 
 	private void OnDisable()
 	{
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBallsEnded, OnBallsEndedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBricksEnded, OnBricksEndedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelSetupStarted, OnLevelSetupStartedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnTimerPaused, OnTimerPausedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnTimerResume, OnTimerResumeCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
+		eventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+		eventsService.UnRegister(Events.OnBallsEnded, OnBallsEndedCallback);
+		eventsService.UnRegister(Events.OnBricksEnded, OnBricksEndedCallback);
+		eventsService.UnRegister(Events.OnLevelSetupStarted, OnLevelSetupStartedCallback);
+		eventsService.UnRegister(Events.OnTimerPaused, OnTimerPausedCallback);
+		eventsService.UnRegister(Events.OnTimerResume, OnTimerResumeCallback);
 	}
 
 	public static string GetFormattedTime(float time) => (time / 1000.0f).ToString("N3");
@@ -102,7 +104,7 @@ public class TimerController : MonoBehaviour
 			BestText.text = GetFormattedTime(TimeWatch.Elapsed);
 			TimerText.color = new Color(1.0f, 0.65f, 0.0f, 1.0f);
 		}
-		GameManager.Instance.EventsService.Raise(Events.OnTimerEnded, new OnTimerEndedEventArg() { Timer = Mathf.Clamp(TimeWatch.Elapsed, 0.0f, InitialTimer) });
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnTimerEnded, new OnTimerEndedEventArg() { Timer = Mathf.Clamp(TimeWatch.Elapsed, 0.0f, InitialTimer) });
 	}
 
 	private void InitChronoText() => TimerText.text = GetFormattedTime(0.0f);
@@ -111,7 +113,7 @@ public class TimerController : MonoBehaviour
 
 	private void FlashTimer()
 	{
-		GameManager.Instance.SoundService.Play(AlertSound);
+		GameManager.Instance.GetService<SoundService>().Play(AlertSound);
 		Vector3 initialScale = TimerText.transform.localScale;
 		TimerText.transform.localScale = new Vector3(initialScale.x * AlertScale, initialScale.y * AlertScale, 1.0f);
 		TimerText.transform.ZoomTo(initialScale, 0.2f, Tweening.QuintIn);
@@ -124,8 +126,8 @@ public class TimerController : MonoBehaviour
 		if (TimeWatch.Elapsed >= InitialTimer)
 		{
 			StopStopwatch();
-			GameManager.Instance.SoundService.Play(FinalSound);
-			GameManager.Instance.EventsService.Raise(Events.OnTimerEnded, new OnTimerEndedEventArg() { Timer = 0.0f });
+			GameManager.Instance.GetService<SoundService>().Play(FinalSound);
+			GameManager.Instance.GetService<EventsService>().Raise(Events.OnTimerEnded, new OnTimerEndedEventArg() { Timer = 0.0f });
 			TimerText.text = GetFormattedTime(InitialTimer);
 			return;
 		}

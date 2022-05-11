@@ -55,10 +55,6 @@ MonoBehaviour:
     m_Key: MaxQuality
     m_Metadata:
       m_Items: []
-  - m_Id: 27455983603712
-    m_Key: SoundSectio
-    m_Metadata:
-      m_Items: []
   - m_Id: 27634082140160
     m_Key: GlobalVolume
     m_Metadata:

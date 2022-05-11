@@ -15,6 +15,6 @@ public class BootStrapper
 		GameManager.Instantiate();
 
 		// On démarre le jeu par le menu
-		GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 	}
 }

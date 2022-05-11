@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class BackgroundsService
+public class BackgroundsService : IService
 {
 	private readonly BackgroundCollectionModel BackgroundCollectionModel;
 	private int CurrentIndex = 0;

@@ -26,7 +26,7 @@ public class LevelItemController : MonoBehaviour
 	{
         LevelModel =  levelModel;
 
-        LevelsTimesSaver LevelsTimesSaver = GameManager.Instance.LevelsTimesSaver;
+        LevelsTimesSaver LevelsTimesSaver = GameManager.Instance.GetService<LevelsTimesSaver>();
         NumberText.text = LevelModel.Number.ToString("D2");
 
 		Locked = LevelsTimesSaver.GetLocked(LevelModel.Id);
@@ -71,8 +71,8 @@ public class LevelItemController : MonoBehaviour
 	public void OnPlayClick()
     {
 		if (Locked) return;
-        GameManager.Instance.SoundService.StopMusic();
-        GameManager.Instance.LevelService.CurrentLevelIndex = LevelModel.Number - 1;
-        GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Gameplay });
+        GameManager.Instance.GetService<SoundService>().StopMusic();
+		GameManager.Instance.GetService<LevelService>().CurrentLevelIndex = LevelModel.Number - 1;
+        GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Gameplay });
     }
 }

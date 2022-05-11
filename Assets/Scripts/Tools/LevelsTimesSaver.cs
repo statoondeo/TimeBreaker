@@ -1,9 +1,8 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using UnityEngine;
 
-public class LevelsTimesSaver
+public class LevelsTimesSaver : IService
 {
 	private static readonly string SAVE_FILENAME = "/SavedData.dat";
 	public LevelsTimes LevelsTimes { get; private set; }
@@ -52,17 +51,17 @@ public class LevelsTimesSaver
 		//SaveTxt();
 	}
 
-	private void SaveTxt()
-	{
-		StringBuilder content = new StringBuilder();
-		foreach (string key in LevelsTimes.LevelTimes.Keys)
-		{
-			LevelTimes levelTimes = LevelsTimes.LevelTimes[key];
-			content.AppendLine(key + "\t" + levelTimes.Tries + "\t" + levelTimes.Times.Count);
-		}
-		File.WriteAllText(string.Concat(Application.persistentDataPath, "/SavedTimes.txt"), content.ToString());
-		//Debug.Log(string.Concat(Application.persistentDataPath, "/SavedTimes.txt"));
-	}
+	//private void SaveTxt()
+	//{
+	//	StringBuilder content = new StringBuilder();
+	//	foreach (string key in LevelsTimes.LevelTimes.Keys)
+	//	{
+	//		LevelTimes levelTimes = LevelsTimes.LevelTimes[key];
+	//		content.AppendLine(key + "\t" + levelTimes.Tries + "\t" + levelTimes.Times.Count);
+	//	}
+	//	File.WriteAllText(string.Concat(Application.persistentDataPath, "/SavedTimes.txt"), content.ToString());
+	//	//Debug.Log(string.Concat(Application.persistentDataPath, "/SavedTimes.txt"));
+	//}
 
 	public void Reset()
 	{

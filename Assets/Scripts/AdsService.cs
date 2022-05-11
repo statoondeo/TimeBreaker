@@ -2,23 +2,30 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class AdsService : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
+public class AdsService : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener,  IService
 {
+	private static readonly float ADS_REFRESH = 180;
 	private static readonly string GAME_ID = "4744033";
 	private Action Callback;
+	public float NextAdTime;
 
-	private void Awake() => Initialize();
+	private void Awake()
+	{
+		Initialize();
+		NextAdTime = 0.0f;
+	}
 
 	private void Start() => Load();
 
 	public void ShowAd(Action callback)
 	{
 		Callback = callback;
-		if (GameManager.Instance.IsCompleteMode)
+		if (GameManager.Instance.IsCompleteMode || (Time.realtimeSinceStartup < NextAdTime))
 		{
 			callback.Invoke();
 			return;
 		}
+		NextAdTime = Time.realtimeSinceStartup + ADS_REFRESH;
 		Advertisement.Show("Interstitial_Android", this);
 	}
 

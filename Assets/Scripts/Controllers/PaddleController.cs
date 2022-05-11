@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using static EventsService;
 using static SoundService;
 
@@ -19,50 +18,47 @@ public class PaddleController : MonoBehaviour
 	[SerializeField] private Clips ExplosionSound;
 	[SerializeField] private float ZoomFactor = 0.25f;
 
-	[SerializeField] private InputAction TouchPosition;
-
 	private void Awake()
 	{
 		MainCamera = Camera.main;
 		InitialScale = transform.localScale;
 		TargetScale = new Vector3(InitialScale.x * ZoomFactor, InitialScale.y * ZoomFactor, 1.0f);
 		PaddlePhysicController = GetComponent<PaddlePhysicController>();
-		Sensitivity = GameManager.Instance.OptionsService.SensitivityLevel;
+		Sensitivity = GameManager.Instance.GetService<OptionsService>().SensitivityLevel;
 	}
 
 	private void OnEnable()
 	{
-		GameManager.Instance.EventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
-		TouchPosition.Enable();
-		TouchPosition.performed += OnPositionChanged;
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
+		eventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+		GameManager.Instance.GetService<InputService>().OnPositionChanged += OnPositionChanged;
 	}
 
 	private void OnDisable()
 	{
-		TouchPosition.performed -= OnPositionChanged;
-		TouchPosition.Disable();
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		GameManager.Instance.GetService<InputService>().OnPositionChanged -= OnPositionChanged;
+		eventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
+		eventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
 	}
 
-	private void OnPositionChanged(InputAction.CallbackContext context)
+	private void OnPositionChanged(Vector2 position)
 {
 		if (!Activated) return;
 
-		Vector2 position = context.ReadValue<Vector2>();
 		Vector3 newPosition = MainCamera.ScreenToWorldPoint(new Vector3(position.x, position.y));
 		transform.position = new Vector3(Mathf.Clamp(newPosition.x * Sensitivity, -Bounds, Bounds), transform.position.y, transform.position.z);
 	}
 
-	private void Start() => GameManager.Instance.EventsService.Raise(Events.OnPaddlePopped, new OnPaddlePoppedEventArg() { PaddleController = this });
+	private void Start() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnPaddlePopped, new OnPaddlePoppedEventArg() { PaddleController = this });
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (!Activated) return;
 
-		GameManager.Instance.SoundService.Play(CollisionSound);
-		GameManager.Instance.ParticlesService.Get(CollisionParticles, transform.position).Play();
+		GameManager.Instance.GetService<SoundService>().Play(CollisionSound);
+		GameManager.Instance.GetService<ParticlesService>().Get(CollisionParticles, transform.position).Play();
 
 		transform.localScale = TargetScale;
 		transform.ZoomTo(InitialScale, 0.5f, Tweening.ElasticOut);
@@ -76,8 +72,8 @@ public class PaddleController : MonoBehaviour
 
 	private void OnLevelEndedCallback(EventModelArg eventArg)
 	{
-		GameManager.Instance.SoundService.Play(ExplosionSound);
-		GameManager.Instance.ParticlesService.Get(DestroyParticles, transform.position).Play();
+		GameManager.Instance.GetService<SoundService>().Play(ExplosionSound);
+		GameManager.Instance.GetService<ParticlesService>().Get(DestroyParticles, transform.position).Play();
 		gameObject.SetActive(false);
 	}
 }

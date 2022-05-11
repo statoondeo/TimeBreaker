@@ -2,25 +2,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputService : MonoBehaviour
+public class InputService : MonoBehaviour, IService
 {
-	//private PlayerControls PlayerControls;
+	private PlayerControls PlayerControls;
 
-	//private void Awake() => PlayerControls = new PlayerControls();
+	private void Awake() => PlayerControls = new PlayerControls();
 
-	//private void Start()
-	//{
-	//	//PlayerControls.PaddleControls.Move.started += PositionPerformed;
-	//	PlayerControls.PaddleControls.Move.performed += PositionPerformed;
-	//	//PlayerControls.PaddleControls.Move.canceled += PositionPerformed;
-	//}
+	private void Start() => PlayerControls.InGame.Position.performed += PositionPerformed;
 
-	//private void PositionPerformed(InputAction.CallbackContext context)
-	//{
-	//	Debug.Log("PositionPerformed=" + context.ReadValue<Vector2>());
-	//	OnPositionPerformed?.Invoke(context.ReadValue<Vector2>());
-	//}
+	private void OnEnable() => PlayerControls.Enable();
 
-	//public event Action<Vector2> OnPositionPerformed;
+	private void OnDisable() => PlayerControls.Disable();
+
+	private void PositionPerformed(InputAction.CallbackContext context) => OnPositionChanged?.Invoke(context.ReadValue<Vector2>());
+
+	public event Action<Vector2> OnPositionChanged;
 }
 

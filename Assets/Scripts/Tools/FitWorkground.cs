@@ -16,6 +16,8 @@ public class FitWorkground : MonoBehaviour
 		FitOrthographicSize();
 	}
 
+	private void Update() => FitOrthographicSize();
+
 	private void FitOrthographicSize()
 	{
 		Vector3 bottomLeft = MainCamera.ViewportToWorldPoint(Vector3.zero);

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticlesService
+public class ParticlesService : IService
 {
 	private readonly Dictionary<Particles, ObjectPool<ParticleSystem>> ParticlesPools;
 	private readonly ParticlesModel ParticlesModel;

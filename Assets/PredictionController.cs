@@ -39,26 +39,28 @@ public class PredictionController : MonoBehaviour
 
 	private void OnEnable()
 	{
-        GameManager.Instance.EventsService.Register(Events.OnPlayerShieldStarted, OnPlayerShieldStartedCallback);
-        GameManager.Instance.EventsService.Register(Events.OnPlayerShieldEnded, OnPlayerShieldEndedCallback);
-        GameManager.Instance.EventsService.Register(Events.OnPaddlePopped, OnPaddlePoppedCallback);
-        GameManager.Instance.EventsService.Register(Events.OnBallPopped, OnBallPoppedCallback);
-        GameManager.Instance.EventsService.Register(Events.OnBallKilled, OnBallKilledCallback);
-        GameManager.Instance.EventsService.Register(Events.OnLevelStarted, OnlevelStartedCallback);
-        GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+        EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+        eventsService.Register(Events.OnPlayerShieldStarted, OnPlayerShieldStartedCallback);
+        eventsService.Register(Events.OnPlayerShieldEnded, OnPlayerShieldEndedCallback);
+        eventsService.Register(Events.OnPaddlePopped, OnPaddlePoppedCallback);
+        eventsService.Register(Events.OnBallPopped, OnBallPoppedCallback);
+        eventsService.Register(Events.OnBallKilled, OnBallKilledCallback);
+        eventsService.Register(Events.OnLevelStarted, OnlevelStartedCallback);
+        eventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
     }
 
     private void OnDisable()
 	{
-        GameManager.Instance.EventsService.UnRegister(Events.OnPlayerShieldStarted, OnPlayerShieldStartedCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnPlayerShieldEnded, OnPlayerShieldEndedCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnPaddlePopped, OnPaddlePoppedCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnBallPopped, OnBallPoppedCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnBallKilled, OnBallKilledCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnLevelStarted, OnlevelStartedCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnBrickPopped, OnBrickPoppedCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnBrickKilled, OnBrickKilledCallback);
+        EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+        eventsService.UnRegister(Events.OnPlayerShieldStarted, OnPlayerShieldStartedCallback);
+        eventsService.UnRegister(Events.OnPlayerShieldEnded, OnPlayerShieldEndedCallback);
+        eventsService.UnRegister(Events.OnPaddlePopped, OnPaddlePoppedCallback);
+        eventsService.UnRegister(Events.OnBallPopped, OnBallPoppedCallback);
+        eventsService.UnRegister(Events.OnBallKilled, OnBallKilledCallback);
+        eventsService.UnRegister(Events.OnLevelStarted, OnlevelStartedCallback);
+        eventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+        eventsService.UnRegister(Events.OnBrickPopped, OnBrickPoppedCallback);
+        eventsService.UnRegister(Events.OnBrickKilled, OnBrickKilledCallback);
     }
 
     private void OnPlayerShieldStartedCallback(EventModelArg eventModelArg) => ShieldRunning = true;
@@ -138,8 +140,9 @@ public class PredictionController : MonoBehaviour
         PaddleController.Item2.gameObject.SetActive(true);
         PaddleController.Item2.Activated = true;
         SceneManager.MoveGameObjectToScene(PaddleController.Item2.gameObject, PredictionScene);
-        GameManager.Instance.EventsService.Register(Events.OnBrickPopped, OnBrickPoppedCallback);
-        GameManager.Instance.EventsService.Register(Events.OnBrickKilled, OnBrickKilledCallback);
+        EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+        eventsService.Register(Events.OnBrickPopped, OnBrickPoppedCallback);
+        eventsService.Register(Events.OnBrickKilled, OnBrickKilledCallback);
         Activated = true;
 
         InvokeRepeating(nameof(Predict), RefreshTime, RefreshTime);

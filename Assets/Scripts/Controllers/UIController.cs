@@ -53,14 +53,16 @@ public class UIController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		GameManager.Instance.EventsService.Register(Events.OnLevelSetupStarted, OnLevelSetupStartedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.Register(Events.OnLevelSetupStarted, OnLevelSetupStartedCallback);
+		eventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
 	}
 
 	private void OnDisable()
 	{
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelSetupStarted, OnLevelSetupStartedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.UnRegister(Events.OnLevelSetupStarted, OnLevelSetupStartedCallback);
+		eventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
 	}
 
 	private void OnLevelEndedCallback(EventModelArg eventArg)
@@ -108,12 +110,12 @@ public class UIController : MonoBehaviour
 	private IEnumerator DisplayStar(float delay, GameObject star)
 	{
 		yield return (new WaitForSeconds(2.0f + delay));
-		GameManager.Instance.SoundService.Play(StarSound);
+		GameManager.Instance.GetService<SoundService>().Play(StarSound);
 		star.SetActive(true);
 		Vector3 initialScale = star.transform.localScale;
 		star.transform.localScale = Vector3.zero;
 		star.transform.ZoomTo(initialScale, 0.5f, Tweening.ElasticOut);
-		GameManager.Instance.ParticlesService.Get(StarParticles, star.transform.position).Play();
+		GameManager.Instance.GetService<ParticlesService>().Get(StarParticles, star.transform.position).Play();
 	}
 
 	private IEnumerator DisplayFinalPanel(int levelNumber)
@@ -123,9 +125,9 @@ public class UIController : MonoBehaviour
 		FinalPanel.gameObject.SetActive(true);
 		FinalPanel.alpha = 0.0f;
 		VictoryIconText.text = DefeatIconText.text = levelNumber.ToString("D2");
-		GameManager.Instance.SoundService.Play(FinalPanel == DefeatPanel ? Clips.Fail : Clips.Victory);
+		GameManager.Instance.GetService<SoundService>().Play(FinalPanel == DefeatPanel ? Clips.Fail : Clips.Victory);
 		FinalPanel.AlphaTo(1.0f, 1.0f, Tweening.QuintOut);
-		BuyButton.SetActive(GameManager.Instance.IAPService.IsBuyButtonActivated);
+		BuyButton.SetActive(GameManager.Instance.GetService<IAPService>().IsBuyButtonActivated);
 		Swipes.SetActive(false);
 	}
 
@@ -173,7 +175,7 @@ public class UIController : MonoBehaviour
 				sound = CountdownAlertSound;
 			}
 			StartText.text = startingText;
-			GameManager.Instance.SoundService.Play(sound);
+			GameManager.Instance.GetService<SoundService>().Play(sound);
 			yield return (StartPanel.AlphaTo(1.0f, .25f, Tweening.QuintOut));
 			yield return (new WaitForSeconds(.4f));
 			yield return (StartPanel.AlphaTo(0.0f, .25f, Tweening.QuintIn));

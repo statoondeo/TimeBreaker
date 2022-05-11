@@ -78,31 +78,34 @@ public class BallController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		GameManager.Instance.EventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
+		eventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
 	}
 
 	private void OnDisable()
-	{
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+{
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
+		eventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
 	}
 
 	private void Start()
 	{
 		BallPhysicController.Activated = Activated;
 		if (!Activated) return;
-		GameManager.Instance.EventsService.Raise(Events.OnBallPopped, new OnBallPoppedEventArg() { Ball = this });
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnBallPopped, new OnBallPoppedEventArg() { Ball = this });
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (!Activated) return;
 
-		GameManager.Instance.ParticlesService.Get(CollisionParticles, transform.position).Play();
-		OnBallCollidedEventArg evt = GameManager.Instance.EventsService.GetOnBallCollidedEventArg();
+		GameManager.Instance.GetService<ParticlesService>().Get(CollisionParticles, transform.position).Play();
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		OnBallCollidedEventArg evt = eventsService.GetOnBallCollidedEventArg();
 		evt.Collision = collision;
-		GameManager.Instance.EventsService.Raise(Events.OnBallCollided, evt);
+		eventsService.Raise(Events.OnBallCollided, evt);
 	}
 
 	private void OnLevelEndedCallback(EventModelArg eventArg) => Kill(Random.value);
@@ -111,13 +114,14 @@ public class BallController : MonoBehaviour
 	{
 		Activated = true;
 		BallPhysicController.Activated = Activated;
-		GameManager.Instance.EventsService.Raise(Events.OnBallPopped, new OnBallPoppedEventArg() { Ball = this });
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnBallPopped, new OnBallPoppedEventArg() { Ball = this });
 	}
 
 	public void Kill(float delay = 0.0f)
 	{
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
-		GameManager.Instance.EventsService.Raise(Events.OnBallKilled, new OnBallKilledEventArg() { Ball = this });
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+		eventsService.Raise(Events.OnBallKilled, new OnBallKilledEventArg() { Ball = this });
 		StartCoroutine(KillBall(delay));
 	}
 
@@ -125,8 +129,8 @@ public class BallController : MonoBehaviour
 	{
 		if (0 != delay) yield return (new WaitForSeconds(delay));
 
-		GameManager.Instance.SoundService.Play(ExplosionSound);
-		ParticleSystem particles = GameManager.Instance.ParticlesService.Get(DestroyParticles, transform.position);
+		GameManager.Instance.GetService<SoundService>().Play(ExplosionSound);
+		ParticleSystem particles = GameManager.Instance.GetService<ParticlesService>().Get(DestroyParticles, transform.position);
 		particles.Play();
 		gameObject.SetActive(false);
 	}

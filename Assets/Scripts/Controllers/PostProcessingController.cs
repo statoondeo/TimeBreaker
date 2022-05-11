@@ -9,13 +9,13 @@ public class PostProcessingController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		if (ConnectToOptions) GameManager.Instance.OptionsService.OnOptionsChanged += Init;
+		if (ConnectToOptions) GameManager.Instance.GetService<OptionsService>().OnOptionsChanged += Init;
 	}
 
 	private void OnDisable()
 	{
-		if (ConnectToOptions) GameManager.Instance.OptionsService.OnOptionsChanged -= Init;
+		if (ConnectToOptions) GameManager.Instance.GetService<OptionsService>().OnOptionsChanged -= Init;
 	}
 
-	private void Init() => PostProcessingObject.SetActive(GameManager.Instance.OptionsService.PostProcessing);
+	private void Init() => PostProcessingObject.SetActive(GameManager.Instance.GetService<OptionsService>().PostProcessing);
 }

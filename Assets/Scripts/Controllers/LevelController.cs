@@ -19,11 +19,11 @@ public class LevelController : MonoBehaviour
 
 	private void Awake()
 	{
-		GameManager.Instance.ParticlesService.Reset();
-		GameManager.Instance.LootService.Init();
+		GameManager.Instance.GetService<ParticlesService>().Reset();
+		GameManager.Instance.GetService<LootService>().Init();
 
-		CurrentLevelModel = GameManager.Instance.LevelService.GetCurrentLevelModel();
-		LevelsTimesSaver = GameManager.Instance.LevelsTimesSaver;
+		CurrentLevelModel = GameManager.Instance.GetService<LevelService>().GetCurrentLevelModel();
+		LevelsTimesSaver = GameManager.Instance.GetService<LevelsTimesSaver>();
 		LevelsTimesSaver.Unlock(CurrentLevelModel.Id);
 		CurrentLevelModel.BestTimer = LevelsTimesSaver.GetBest(CurrentLevelModel.Id, CurrentLevelModel.SuccessTimer);
 		LevelBrickCount = 0;
@@ -33,20 +33,22 @@ public class LevelController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		GameManager.Instance.EventsService.Register(Events.OnTimerEnded, OnTimerEndedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnBrickPopped, OnBrickPoppedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnBrickKilled, OnBrickKilledCallback);
-		GameManager.Instance.EventsService.Register(Events.OnBallPopped, OnBallPoppedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnBallKilled, OnBallKilledCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.Register(Events.OnTimerEnded, OnTimerEndedCallback);
+		eventsService.Register(Events.OnBrickPopped, OnBrickPoppedCallback);
+		eventsService.Register(Events.OnBrickKilled, OnBrickKilledCallback);
+		eventsService.Register(Events.OnBallPopped, OnBallPoppedCallback);
+		eventsService.Register(Events.OnBallKilled, OnBallKilledCallback);
 	}
 
 	private void OnDisable()
 	{
-		GameManager.Instance.EventsService.UnRegister(Events.OnTimerEnded, OnTimerEndedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBrickPopped, OnBrickPoppedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBrickKilled, OnBrickKilledCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBallPopped, OnBallPoppedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBallKilled, OnBallKilledCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.UnRegister(Events.OnTimerEnded, OnTimerEndedCallback);
+		eventsService.UnRegister(Events.OnBrickPopped, OnBrickPoppedCallback);
+		eventsService.UnRegister(Events.OnBrickKilled, OnBrickKilledCallback);
+		eventsService.UnRegister(Events.OnBallPopped, OnBallPoppedCallback);
+		eventsService.UnRegister(Events.OnBallKilled, OnBallKilledCallback);
 	}
 
 	private void PerformBrickModel(BrickInLevelModel brickInLevelModel, bool rootObject = false)
@@ -64,31 +66,33 @@ public class LevelController : MonoBehaviour
 
 	private void OnTimerEndedCallback(EventModelArg eventArg)
 	{
-		GameManager.Instance.EventsService.UnRegister(Events.OnTimerEnded, OnTimerEndedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBrickPopped, OnBrickPoppedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBrickKilled, OnBrickKilledCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBallPopped, OnBallPoppedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnBallKilled, OnBallKilledCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.UnRegister(Events.OnTimerEnded, OnTimerEndedCallback);
+		eventsService.UnRegister(Events.OnBrickPopped, OnBrickPoppedCallback);
+		eventsService.UnRegister(Events.OnBrickKilled, OnBrickKilledCallback);
+		eventsService.UnRegister(Events.OnBallPopped, OnBallPoppedCallback);
+		eventsService.UnRegister(Events.OnBallKilled, OnBallKilledCallback);
 
 		float score = (eventArg as OnTimerEndedEventArg).Timer;
 		if (score == 0.0f)
 		{
-			GameManager.Instance.EventsService.Raise(Events.OnLevelEnded);
+			eventsService.Raise(Events.OnLevelEnded);
 			ChangeFinalText("TimeoutTitle");
 		}
 		else
 		{
 			LevelsTimesSaver.AddTime(CurrentLevelModel.Id, score);
-			GameManager.Instance.LevelService.GotoNextLevel();
-			LevelsTimesSaver.Unlock(GameManager.Instance.LevelService.GetCurrentLevelModel().Id);
-			GameManager.Instance.EventsService.Raise(Events.OnLevelEnded, new OnLevelEndedEventArg()
+			LevelService levelService = GameManager.Instance.GetService<LevelService>();
+			levelService.GotoNextLevel();
+			LevelsTimesSaver.Unlock(levelService.GetCurrentLevelModel().Id);
+			eventsService.Raise(Events.OnLevelEnded, new OnLevelEndedEventArg()
 			{
 				Timer = CurrentLevelModel.SuccessTimer,
 				Best = LevelsTimesSaver.GetBest(CurrentLevelModel.Id, CurrentLevelModel.SuccessTimer),
 				Score = score
 			});
 		}
-		GameManager.Instance.SoundService.StopMusic();
+		GameManager.Instance.GetService<SoundService>().StopMusic();
 		Cursor.visible = true;
 	}
 
@@ -99,12 +103,13 @@ public class LevelController : MonoBehaviour
 		LevelBallCount--;
 		if (LevelBallCount > 0) return;
 
-		GameManager.Instance.EventsService.UnRegister(Events.OnBallKilled, OnBallKilledCallback);
-		GameManager.Instance.SoundService.StopMusic();
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.UnRegister(Events.OnBallKilled, OnBallKilledCallback);
+		GameManager.Instance.GetService<SoundService>().StopMusic();
 		Cursor.visible = true;
 		ChangeFinalText("DefeatTitle");
-		GameManager.Instance.EventsService.Raise(Events.OnBallsEnded);
-		GameManager.Instance.EventsService.Raise(Events.OnLevelEnded);
+		eventsService.Raise(Events.OnBallsEnded);
+		eventsService.Raise(Events.OnLevelEnded);
 	}
 
 	private void OnBrickPoppedCallback(EventModelArg eventArg) => LevelBrickCount++;
@@ -112,7 +117,7 @@ public class LevelController : MonoBehaviour
 	private void OnBrickKilledCallback(EventModelArg eventArg)
 	{
 		LevelBrickCount--;
-		if (LevelBrickCount <= 0) GameManager.Instance.EventsService.Raise(Events.OnBricksEnded);
+		if (LevelBrickCount <= 0) GameManager.Instance.GetService<EventsService>().Raise(Events.OnBricksEnded);
 	}
 
 	private void AddSetupCurve(GameObject gameObject, SetupCurveParameter setupCurveParameter)
@@ -135,7 +140,7 @@ public class LevelController : MonoBehaviour
 
 	private void StartSetup()
 	{
-		GameManager.Instance.EventsService.Raise(Events.OnLevelSetupStarted, new OnSetupStartedEventArg() { LevelModel = CurrentLevelModel });
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnLevelSetupStarted, new OnSetupStartedEventArg() { LevelModel = CurrentLevelModel });
 		SetupDoneCounter = 0;
 		CurveFollower curveFollower;
 		for (int i = 0, nbItems = SetupCurves.Count; i < nbItems; i++)
@@ -151,32 +156,33 @@ public class LevelController : MonoBehaviour
 		SetupDoneCounter++;
 		if (SetupDoneCounter < SetupCurves.Count) return;
 
-		GameManager.Instance.EventsService.Raise(Events.OnLevelSetupEnded);
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnLevelSetupEnded);
 		StartLevel();
 	}
 	private void StartLevel()
 	{
 		LevelsTimesSaver.AddTry(CurrentLevelModel.Id);
-		GameManager.Instance.SoundService.Play(GameManager.Instance.SoundService.GetNextMusic());
-		GameManager.Instance.EventsService.Raise(Events.OnLevelStarted, new OnLevelStartedEventArg() { Timer = CurrentLevelModel.SuccessTimer });
+		GameManager.Instance.GetService<SoundService>().Play(GameManager.Instance.GetService<SoundService>().GetNextMusic());
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnLevelStarted, new OnLevelStartedEventArg() { Timer = CurrentLevelModel.SuccessTimer });
 	}
 
-	public void OnMenuClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
+	public void OnMenuClick() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 
 	public void OnSelectionClick() => StartCoroutine(GotoNextScene(GotoSelection));
 
 	public void OnRetryClick() => StartCoroutine(GotoNextScene(GotoGameplay));
 
-	public void OnShopClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Shop });
+	public void OnShopClick() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Shop });
 
 	public void OnContinueClick() => StartCoroutine(GotoNextScene(GotoGameplay));
 
 	private IEnumerator GotoNextScene(Action callback)
 	{
 		yield return (new WaitForSeconds(.1f));
-		GameManager.Instance.AdsService.ShowAd(callback);
+		GameManager.Instance.GetService<AdsService>().ShowAd(callback);
 	}
 
-	private void GotoGameplay() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Gameplay });
-	private void GotoSelection() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Selection });
+	private void GotoGameplay() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Gameplay });
+
+	private void GotoSelection() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Selection });
 }

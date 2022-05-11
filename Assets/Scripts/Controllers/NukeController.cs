@@ -17,7 +17,7 @@ public class NukeController : MonoBehaviour
 	private IEnumerator NukeWaveRoutine()
 	{
 		transform.localScale = Vector3.zero;
-		GameManager.Instance.SoundService.Play(Sound);
+		GameManager.Instance.GetService<SoundService>().Play(Sound);
 		yield return (transform.ZoomTo(new Vector3(Size, Size, 1.0f), Duration, Tweening.QuintIn));
 		yield return (new WaitForSeconds(Duration));
 		Destroy(gameObject);

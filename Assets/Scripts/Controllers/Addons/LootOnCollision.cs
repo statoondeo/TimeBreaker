@@ -6,13 +6,13 @@ public class LootOnCollision : MonoBehaviour
 	[SerializeField] private GameObject ObjectToPop;
 	[SerializeField] private Particles Particles;
 
-	private void OnEnable() => GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+	private void OnEnable() => GameManager.Instance.GetService<EventsService>().Register(Events.OnLevelEnded, OnLevelEndedCallback);
 
-	private void OnDisable() => GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+	private void OnDisable() => GameManager.Instance.GetService<EventsService>().UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
 
 	private void OnLevelEndedCallback(EventModelArg eventArg)
 	{
-		GameManager.Instance.ParticlesService.Get(Particles, transform.position).Play();
+		GameManager.Instance.GetService<ParticlesService>().Get(Particles, transform.position).Play();
 		Destroy(gameObject);
 	}
 
@@ -21,7 +21,7 @@ public class LootOnCollision : MonoBehaviour
 		if (collision.collider.CompareTag("Player"))
 		{
 			Instantiate(ObjectToPop, transform.position, Quaternion.identity);
-			GameManager.Instance.ParticlesService.Get(Particles, transform.position).Play();
+			GameManager.Instance.GetService<ParticlesService>().Get(Particles, transform.position).Play();
 			Destroy(gameObject);
 			return;
 		}

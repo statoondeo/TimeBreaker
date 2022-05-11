@@ -10,7 +10,6 @@ public class ChromaticAberrationController : MonoBehaviour
 
 	private Volume PostProcessingVolume;
 	private ChromaticAberration chromaticAberration;
-	private Coroutine Routine;
 
 	private void Awake()
 	{
@@ -18,9 +17,9 @@ public class ChromaticAberrationController : MonoBehaviour
 		PostProcessingVolume.profile.TryGet<ChromaticAberration>(out chromaticAberration);
 	}
 
-	private void OnEnable() => GameManager.Instance.EventsService.Register(EventsService.Events.OnBallCollided, OnBallCollidedCallback);
+	private void OnEnable() => GameManager.Instance.GetService<EventsService>().Register(EventsService.Events.OnBallCollided, OnBallCollidedCallback);
 	
-	private void OnDisable() => GameManager.Instance.EventsService.UnRegister(EventsService.Events.OnBallCollided, OnBallCollidedCallback);
+	private void OnDisable() => GameManager.Instance.GetService<EventsService>().UnRegister(EventsService.Events.OnBallCollided, OnBallCollidedCallback);
 
 	private void OnBallCollidedCallback(EventModelArg eventArg) => StartCoroutine(IntensityRoutine());
 

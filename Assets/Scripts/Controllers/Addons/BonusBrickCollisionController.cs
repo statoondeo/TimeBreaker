@@ -2,24 +2,29 @@
 using static SoundService;
 
 //[RequireComponent(typeof(IndestructibleBrickController))]
-public class BonusBrickCollisionController : MonoBehaviour
+public class BonusBrickCollisionController : IndestructibleBrickController
 {
-	[SerializeField] private GameObject BallPrefab;
 	[SerializeField] private BadgeController BadgeController;
-	[SerializeField] private Particles CollisionParticles;
+	[SerializeField] private Particles LootParticles;
 	[SerializeField] private Clips BonusSound;
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (!BadgeController.CanStart) return;
+	protected override void OnCollisionEnter2D(Collision2D collision)
+{
+		if (!Activated) return;
 
-		GameManager.Instance.SoundService.Play(BonusSound);
+		if (!BadgeController.CanStart)
+		{
+			base.OnCollisionEnter2D(collision);
+			return;
+		}
+
+		GameManager.Instance.GetService<SoundService>().Play(BonusSound);
 		BadgeController.StartBadgeTimer();
 
-		Rigidbody2D rigidbody2D =Instantiate(GameManager.Instance.LootService.GetNextLoot(), transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+		Rigidbody2D rigidbody2D = Instantiate(GameManager.Instance.GetService<LootService>().GetNextLoot(), transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
 		rigidbody2D.velocity = 2.0f * collision.contacts[0].normalImpulse * collision.contacts[0].normal;
 
-		ParticleSystem particles = GameManager.Instance.ParticlesService.Get(CollisionParticles, transform.position, Quaternion.FromToRotation(transform.up, -collision.contacts[0].normal));
+		ParticleSystem particles = GameManager.Instance.GetService<ParticlesService>().Get(LootParticles, transform.position, Quaternion.FromToRotation(transform.up, -collision.contacts[0].normal));
 		ParticleSystem.MainModule mainModule = particles.main;
 		mainModule.startSpeedMultiplier = collision.contacts[0].normalImpulse;
 		particles.Play();

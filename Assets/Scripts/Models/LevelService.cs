@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-public class LevelService
+public class LevelService : IService
 {
     private readonly LevelCatalogModel LevelCatalogModel;
 

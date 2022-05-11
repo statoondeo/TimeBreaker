@@ -8,8 +8,8 @@ public class WallController : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		GameManager.Instance.ParticlesService.Get(CollisionParticles, collision.GetContact(0).point).Play();
-		GameManager.Instance.SoundService.Play(CollisionSound);
+		GameManager.Instance.GetService<ParticlesService>().Get(CollisionParticles, collision.GetContact(0).point).Play();
+		GameManager.Instance.GetService<SoundService>().Play(CollisionSound);
 	}
 }
 

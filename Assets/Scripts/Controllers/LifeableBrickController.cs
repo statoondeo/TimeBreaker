@@ -24,7 +24,7 @@ public class LifeableBrickController : IndestructibleBrickController
 	private void Start()
 	{
 		CurrentLife = StartingLife;
-		GameManager.Instance.EventsService.Raise(EventsService.Events.OnBrickPopped, new OnBrickPoppedEventArg() { Brick = this });
+		GameManager.Instance.GetService<EventsService>().Raise(EventsService.Events.OnBrickPopped, new OnBrickPoppedEventArg() { Brick = this });
 	}
 
 	public bool CanAddLife() => (CurrentLife > 0) && (CurrentLife < StartingLife);
@@ -33,6 +33,8 @@ public class LifeableBrickController : IndestructibleBrickController
 
 	protected override void OnCollisionEnter2D(Collision2D collision)
 	{
+		if (!Activated) return;
+
 		AddLife(-1);
 
 		if (CurrentLife > 0)
@@ -41,12 +43,12 @@ public class LifeableBrickController : IndestructibleBrickController
 			return;
 		}
 
-		GameManager.Instance.SoundService.Play(ExplosionSound);
-		ParticleSystem particles = GameManager.Instance.ParticlesService.Get(DestroyParticles, transform.position, Quaternion.FromToRotation(transform.up, -collision.GetContact(0).normal));
+		GameManager.Instance.GetService<SoundService>().Play(ExplosionSound);
+		ParticleSystem particles = GameManager.Instance.GetService<ParticlesService>().Get(DestroyParticles, transform.position, Quaternion.FromToRotation(transform.up, -collision.GetContact(0).normal));
 		ParticleSystem.MainModule mainModule = particles.main;
 		mainModule.startSpeedMultiplier = collision.GetContact(0).normalImpulse;
 		particles.Play();
-		GameManager.Instance.EventsService.Raise(EventsService.Events.OnBrickKilled, new OnBrickKilledEventArg() { Brick = this });
+		GameManager.Instance.GetService<EventsService>().Raise(EventsService.Events.OnBrickKilled, new OnBrickKilledEventArg() { Brick = this });
 		gameObject.SetActive(false);
 	}
 }

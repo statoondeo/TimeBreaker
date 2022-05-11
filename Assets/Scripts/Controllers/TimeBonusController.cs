@@ -8,8 +8,8 @@ public class TimeBonusController : MonoBehaviour
 
 	private void Start()
 	{
-		GameManager.Instance.SoundService.Play(Sound);
-		GameManager.Instance.EventsService.Raise(EventsService.Events.OnTimerPaused, new OnTimerPausedEventArg() { Duration = Duration });
+		GameManager.Instance.GetService<SoundService>().Play(Sound);
+		GameManager.Instance.GetService<EventsService>().Raise(EventsService.Events.OnTimerPaused, new OnTimerPausedEventArg() { Duration = Duration });
 		Destroy(gameObject);
 	}
 }

@@ -17,9 +17,9 @@ public class CameraShakeController : MonoBehaviour
 		BackgroundInitialPosition = Background.transform.position;
 	}
 
-	private void OnEnable() => GameManager.Instance.EventsService.Register(Events.OnBallCollided, OnBallCollidedCallback);
+	private void OnEnable() => GameManager.Instance.GetService<EventsService>().Register(Events.OnBallCollided, OnBallCollidedCallback);
 
-	private void OnDisable() => GameManager.Instance.EventsService.UnRegister(Events.OnBallCollided, OnBallCollidedCallback);
+	private void OnDisable() => GameManager.Instance.GetService<EventsService>().UnRegister(Events.OnBallCollided, OnBallCollidedCallback);
 
 	private void OnBallCollidedCallback(EventModelArg eventArg)
 	{

@@ -8,7 +8,7 @@ public class LevelSelectionController : MonoBehaviour
 
 	[SerializeField] private GameObject BuyButton;
 
-	private void Awake() => BuyButton.SetActive(GameManager.Instance.IAPService.IsBuyButtonActivated);
+	private void Awake() => BuyButton.SetActive(GameManager.Instance.GetService<IAPService>().IsBuyButtonActivated);
 
 	private void Start() => Init();
 
@@ -20,11 +20,12 @@ public class LevelSelectionController : MonoBehaviour
 	private void Init()
 	{
 		Clear();
-		for (int i = 0, nbItems = GameManager.Instance.LevelService.Levels.Length; i < nbItems; i++)
-			Instantiate(LevelItemPrefab, LevelItemsContainer.transform).GetComponent<LevelItemController>().Init(i, GameManager.Instance.LevelService.Levels[i]);
+		LevelService levelService = GameManager.Instance.GetService<LevelService>();
+		for (int i = 0, nbItems = levelService.Levels.Length; i < nbItems; i++)
+			Instantiate(LevelItemPrefab, LevelItemsContainer.transform).GetComponent<LevelItemController>().Init(i, levelService.Levels[i]);
 	}
 
-	public void OnBackClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
+	public void OnBackClick() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 	
-	public void OnShopClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Shop });
+	public void OnShopClick() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Shop });
 }

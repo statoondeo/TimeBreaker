@@ -37,14 +37,16 @@ public class CumulativedBadgeController : MonoBehaviour
 
 	private void OnEnable()
 	{
-        GameManager.Instance.EventsService.Register(StartEvent, OnStartEventTriggeredCallback);
-        GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+        EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+        eventsService.Register(StartEvent, OnStartEventTriggeredCallback);
+        eventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.EventsService.UnRegister(StartEvent, OnStartEventTriggeredCallback);
-        GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+        EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+        eventsService.UnRegister(StartEvent, OnStartEventTriggeredCallback);
+        eventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
     }
 
     private void OnLevelEndedCallback(EventModelArg eventArg)
@@ -68,7 +70,7 @@ public class CumulativedBadgeController : MonoBehaviour
             Routine = StartCoroutine(BadgeTimerRoutine());
             if (eventArg is OnPlayerShieldStartedEventArg) Instantiate(ObjectToPop);
         }
-        GameManager.Instance.ParticlesService.Get(Particles, transform.position).Play();
+        GameManager.Instance.GetService<ParticlesService>().Get(Particles, transform.position).Play();
     }
 
     private IEnumerator BadgeTimerRoutine()
@@ -85,6 +87,6 @@ public class CumulativedBadgeController : MonoBehaviour
         BadgeForeground.fillAmount = TargetValue;
         BadgeForeground.fillAmount = WaitingValue;
         Running = false;
-        GameManager.Instance.EventsService.Raise(StopEvent);
+        GameManager.Instance.GetService<EventsService>().Raise(StopEvent);
     }
 }

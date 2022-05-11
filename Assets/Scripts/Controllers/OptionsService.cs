@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class OptionsService
+public class OptionsService : IService
 {
 	private readonly UniversalRenderPipelineAsset PipelineAsset;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class SoundService
+public partial class SoundService : IService
 {
 	private readonly SoundsModel SoundsModel;
 
@@ -37,8 +37,8 @@ public partial class SoundService
 
 	public void SetVolumes()
 	{
-		MainMusicSource.volume = GameManager.Instance.OptionsService.GlobalVolume * GameManager.Instance.OptionsService.MusicVolume / 10000.0f;
-		EffectSource.volume = GameManager.Instance.OptionsService.GlobalVolume * GameManager.Instance.OptionsService.EffectVolume / 10000.0f;
+		MainMusicSource.volume = GameManager.Instance.GetService<OptionsService>().GlobalVolume * GameManager.Instance.GetService<OptionsService>().MusicVolume / 10000.0f;
+		EffectSource.volume = GameManager.Instance.GetService<OptionsService>().GlobalVolume * GameManager.Instance.GetService<OptionsService>().EffectVolume / 10000.0f;
 	}
 
 	private void LoadAtlas()

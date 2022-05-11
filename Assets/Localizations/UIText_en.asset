@@ -60,10 +60,6 @@ MonoBehaviour:
     m_Localized: Max
     m_Metadata:
       m_Items: []
-  - m_Id: 27455983603712
-    m_Localized: Sounds
-    m_Metadata:
-      m_Items: []
   - m_Id: 27634082140160
     m_Localized: Global
     m_Metadata:

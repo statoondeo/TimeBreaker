@@ -9,17 +9,8 @@ public class GameManager : Singleton<GameManager>
 	[SerializeField] private GameModel GameModel;
 
 	[HideInInspector] public bool IsCompleteMode;
-	[HideInInspector] public LevelsTimesSaver LevelsTimesSaver;
-	[HideInInspector] public EventsService EventsService;
-	[HideInInspector] public ParticlesService ParticlesService;
-	[HideInInspector] public SoundService SoundService;
-	[HideInInspector] public OptionsService OptionsService;
-	[HideInInspector] public LevelService LevelService;
-	[HideInInspector] public LootService LootService;
-	[HideInInspector] public BackgroundsService BackgroundsService;
-	[HideInInspector] public IAPService IAPService;
-	[HideInInspector] public AdsService AdsService;
-	[HideInInspector] public InputService InputService;
+
+	private ServiceLocator ServiceLocator;
 
 	public static GameObject Instantiate() => Instantiate(Resources.Load(PREFAB_PATH)) as GameObject;
 
@@ -27,35 +18,29 @@ public class GameManager : Singleton<GameManager>
 	{
 		base.Awake();
 
-		Input.backButtonLeavesApp = true;
-		LevelsTimesSaver = new LevelsTimesSaver();
+		ServiceLocator = new ServiceLocator();
 
-		if (PlayerPrefs.GetString("Reset", string.Empty) != "1.3.1")
-		{
-			LevelsTimesSaver.Reset();
-			PlayerPrefs.SetString("Reset", "1.3.1");
-		}
+		ServiceLocator.Register(new LevelsTimesSaver());
+		ServiceLocator.Register(new EventsService());
+		ServiceLocator.Register(gameObject.AddComponent<IAPService>());
+		ServiceLocator.Register(gameObject.AddComponent<AdsService>());
+		ServiceLocator.Register(gameObject.AddComponent<InputService>());
+		ServiceLocator.Register(new ParticlesService(GameModel.ParticlesModel));
+		SoundService soundService = ServiceLocator.Register(new SoundService(GameModel.SoundsModel));
+		OptionsService optionsService = ServiceLocator.Register(new OptionsService(GameModel.SoundsModel.GlobalVolume, GameModel.SoundsModel.MusicsVolume, GameModel.SoundsModel.SoundsVolume));
+		ServiceLocator.Register(new LevelService(GameModel.LevelCatalogModel));
+		ServiceLocator.Register(new LootService(GameModel.ArcadeLootModel));
+		ServiceLocator.Register(new BackgroundsService(GameModel.BackgroundCollectionModel));
 
-		EventsService = new EventsService();
-
-		IAPService = gameObject.AddComponent<IAPService>();
-		AdsService = gameObject.AddComponent<AdsService>();
-		InputService = gameObject.AddComponent<InputService>();
-
-		ParticlesService = new ParticlesService(GameModel.ParticlesModel);
-		SoundService = new SoundService(GameModel.SoundsModel);
-		OptionsService = new OptionsService(GameModel.SoundsModel.GlobalVolume, GameModel.SoundsModel.MusicsVolume, GameModel.SoundsModel.SoundsVolume);
-		LevelService = new LevelService(GameModel.LevelCatalogModel);
-		LootService = new LootService(GameModel.ArcadeLootModel);
-		BackgroundsService = new BackgroundsService(GameModel.BackgroundCollectionModel);
-
-		SoundService.SetVolumes();
-		OptionsService.OnOptionsChanged += SoundService.SetVolumes;
+		soundService.SetVolumes();
+		optionsService.OnOptionsChanged += soundService.SetVolumes;
 	}
 
-	private void OnEnable() => EventsService.Register(Events.OnSceneRequested, OnSceneRequestedCallback);
+	public T GetService<T>() where T : class => ServiceLocator.Get<T>();
 
-	private void OnDestroy() => EventsService.UnRegister(Events.OnSceneRequested, OnSceneRequestedCallback);
+	private void OnEnable() => GetService<EventsService>().Register(Events.OnSceneRequested, OnSceneRequestedCallback);
+
+	private void OnDestroy() => GetService<EventsService>().UnRegister(Events.OnSceneRequested, OnSceneRequestedCallback);
 
 	private void OnSceneRequestedCallback(EventModelArg eventArg) => LoadScene((eventArg as OnSceneRequestedEventArg).Scene);
 

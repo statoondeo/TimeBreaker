@@ -22,14 +22,16 @@ public class BlinkingShieldController : MonoBehaviour
 
 	private void OnEnable()
 	{
-		GameManager.Instance.EventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
-		GameManager.Instance.EventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.Register(Events.OnLevelStarted, OnLevelStartedCallback);
+		eventsService.Register(Events.OnLevelEnded, OnLevelEndedCallback);
 	}
 
 	private void OnDisable()
 	{
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
-		GameManager.Instance.EventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
+		EventsService eventsService = GameManager.Instance.GetService<EventsService>();
+		eventsService.UnRegister(Events.OnLevelStarted, OnLevelStartedCallback);
+		eventsService.UnRegister(Events.OnLevelEnded, OnLevelEndedCallback);
 	}
 
 	private void OnLevelStartedCallback(EventModelArg eventArg) => BadgeController.StartBadgeTimer();
@@ -41,13 +43,13 @@ public class BlinkingShieldController : MonoBehaviour
 		BadgeController.StartBadgeTimer();
 		if (TargetScale == Vector3.one)
 		{
-			GameManager.Instance.SoundService.Play(ShieldOut);
+			GameManager.Instance.GetService<SoundService>().Play(ShieldOut);
 			ShieldGameObject.transform.ZoomTo(TargetScale, Duration, Tweening.ElasticOut);
 			TargetScale = Vector3.zero;
 		}
 		else
 		{
-			GameManager.Instance.SoundService.Play(ShieldIn);
+			GameManager.Instance.GetService<SoundService>().Play(ShieldIn);
 			ShieldGameObject.transform.ZoomTo(TargetScale, Duration, Tweening.ElasticIn);
 			TargetScale = Vector3.one;
 		}

@@ -27,7 +27,7 @@ public class BadgeController : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.Instance.EventsService.Register(EventsService.Events.OnLevelEnded, StopBadgeTimer);
+        GameManager.Instance.GetService<EventsService>().Register(EventsService.Events.OnLevelEnded, StopBadgeTimer);
         BadgeForeground.sprite = BadgeImage;
         BadgeForeground.color = ActiveColor;
         BadgeBackground.sprite = BadgeImage;
@@ -36,9 +36,9 @@ public class BadgeController : MonoBehaviour
         Init();
     }
 
-	private void OnEnable() => GameManager.Instance.EventsService.Register(EventsService.Events.OnLevelEnded, StopBadgeTimer);
+	private void OnEnable() => GameManager.Instance.GetService<EventsService>().Register(EventsService.Events.OnLevelEnded, StopBadgeTimer);
 
-	private void OnDisable() => GameManager.Instance.EventsService.UnRegister(EventsService.Events.OnLevelEnded, StopBadgeTimer);
+	private void OnDisable() => GameManager.Instance.GetService<EventsService>().UnRegister(EventsService.Events.OnLevelEnded, StopBadgeTimer);
 
     public void Init(bool canStart = true)
     {
@@ -69,8 +69,8 @@ public class BadgeController : MonoBehaviour
             ttl += Time.deltaTime;
         }
         BadgeForeground.fillAmount = TargetValue;
-        GameManager.Instance.SoundService.Play(RechargeSound);
-        GameManager.Instance.ParticlesService.Get(Particles, transform.position).Play();
+        GameManager.Instance.GetService<SoundService>().Play(RechargeSound);
+        GameManager.Instance.GetService<ParticlesService>().Get(Particles, transform.position).Play();
         CanStart = true;
         OnReady?.Invoke();
     }

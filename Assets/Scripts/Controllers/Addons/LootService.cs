@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LootService
+public class LootService : IService
 {
 	private readonly LootModel LootModel;
 	private int NbLoots;

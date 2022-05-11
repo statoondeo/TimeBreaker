@@ -8,15 +8,15 @@ public class ShieldController : MonoBehaviour
 	[SerializeField] private Clips StartLoop;
 	[SerializeField] private Clips EndLoop;
 
-	private void OnEnable() => GameManager.Instance.EventsService.Register(EventsService.Events.OnPlayerShieldEnded, OnPlayerShieldEndedCallback);
+	private void OnEnable() => GameManager.Instance.GetService<EventsService>().Register(EventsService.Events.OnPlayerShieldEnded, OnPlayerShieldEndedCallback);
 
-	private void OnDisable() => GameManager.Instance.EventsService.UnRegister(EventsService.Events.OnPlayerShieldEnded, OnPlayerShieldEndedCallback);
+	private void OnDisable() => GameManager.Instance.GetService<EventsService>().UnRegister(EventsService.Events.OnPlayerShieldEnded, OnPlayerShieldEndedCallback);
 
 	private void Start()
 	{
 		transform.position = InitialPosition;
 		transform.localScale = Vector3.zero;
-		GameManager.Instance.SoundService.Play(StartLoop);
+		GameManager.Instance.GetService<SoundService>().Play(StartLoop);
 		transform.ZoomTo(new Vector3(2.0f, 2.0f, 1.0f), 0.5f, Tweening.ElasticOut);
 	}
 
@@ -24,7 +24,7 @@ public class ShieldController : MonoBehaviour
 
 	private IEnumerator OnPlayerShieldEndedRoutine()
 	{
-		GameManager.Instance.SoundService.Play(EndLoop);
+		GameManager.Instance.GetService<SoundService>().Play(EndLoop);
 		yield return (transform.ZoomTo(Vector3.zero, 0.5f, Tweening.ElasticIn));
 		Destroy(gameObject);
 	}

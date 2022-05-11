@@ -6,7 +6,7 @@ public class ShieldBonusController : MonoBehaviour
 
 	private void Start()
 	{
-		GameManager.Instance.EventsService.Raise(EventsService.Events.OnPlayerShieldStarted, new OnPlayerShieldStartedEventArg() { Duration = Duration });
+		GameManager.Instance.GetService<EventsService>().Raise(EventsService.Events.OnPlayerShieldStarted, new OnPlayerShieldStartedEventArg() { Duration = Duration });
 		Destroy(gameObject);
 	}
 }

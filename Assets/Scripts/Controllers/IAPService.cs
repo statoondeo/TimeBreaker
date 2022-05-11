@@ -2,7 +2,7 @@
 using UnityEngine;
 using static EventsService;
 
-public class IAPService : MonoBehaviour, IStoreListener
+public class IAPService : MonoBehaviour, IStoreListener, IService
 {
 	private static readonly string ProductID = "fullversionproduct";
 
@@ -29,7 +29,7 @@ public class IAPService : MonoBehaviour, IStoreListener
 	public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs purchaseEvent)
 	{
 		GameManager.Instance.IsCompleteMode = true;
-		GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 		return (PurchaseProcessingResult.Complete);
 	}
 
@@ -42,7 +42,7 @@ public class IAPService : MonoBehaviour, IStoreListener
 		GameManager.Instance.IsCompleteMode = (null != product) && product.hasReceipt;
 		PriceLabel = product.metadata.localizedPriceString;
 		Initialized = true;
-		GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
+		GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 	}
 
 	public void InitiatePurchase() => Controller.InitiatePurchase(ProductID);

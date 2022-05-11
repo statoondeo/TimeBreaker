@@ -26,7 +26,7 @@ public class OptionController : MonoBehaviour
 
 	private void Awake()
 	{
-		BuyButton.SetActive(GameManager.Instance.IAPService.IsBuyButtonActivated);
+		BuyButton.SetActive(GameManager.Instance.GetService<IAPService>().IsBuyButtonActivated);
 		WaitForSeconds = new WaitForSeconds(EffectDelay);
 		QualityTextLocalized = QualityText.GetComponent<LocalizeStringEvent>();
 		SensibilityTextLocalized = SensibilityText.GetComponent<LocalizeStringEvent>();
@@ -34,26 +34,28 @@ public class OptionController : MonoBehaviour
 
 	private void Start()
 	{
-		PostProcessingToggle.isOn = GameManager.Instance.OptionsService.PostProcessing;
-		QualitySlider.value = GameManager.Instance.OptionsService.GraphicQuality;
-		GlobalVolume.value = GameManager.Instance.OptionsService.GlobalVolume;
-		MusicVolume.value = GameManager.Instance.OptionsService.MusicVolume;
-		EffectVolume.value = GameManager.Instance.OptionsService.EffectVolume;
-		SensibilitySlider.value = GameManager.Instance.OptionsService.Sensibility;
+		OptionsService optionsService = GameManager.Instance.GetService<OptionsService>();
+		PostProcessingToggle.isOn = optionsService.PostProcessing;
+		QualitySlider.value = optionsService.GraphicQuality;
+		GlobalVolume.value = optionsService.GlobalVolume;
+		MusicVolume.value = optionsService.MusicVolume;
+		EffectVolume.value = optionsService.EffectVolume;
+		SensibilitySlider.value = optionsService.Sensibility;
 
 		OnQualitySliderChanged(QualitySlider.value);
 
 		CanPlayEffect = true;
 	}
 
-	public void OnBackClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
+	public void OnBackClick() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Menu });
 
-	public void OnPostProcessingToggleChanged(bool newValue) => GameManager.Instance.OptionsService.PostProcessing = newValue;
+	public void OnPostProcessingToggleChanged(bool newValue) => GameManager.Instance.GetService<OptionsService>().PostProcessing = newValue;
 
 	public void OnSensibilitySliderChanged(float newValue)
 	{
-		GameManager.Instance.OptionsService.Sensibility = (int)newValue;
-		switch (GameManager.Instance.OptionsService.Sensibility)
+		OptionsService optionsService = GameManager.Instance.GetService<OptionsService>();
+		optionsService.Sensibility = (int)newValue;
+		switch (optionsService.Sensibility)
 		{
 			case 0:
 				SensibilityTextLocalized.SetEntry("LowSensitivity");
@@ -72,8 +74,9 @@ public class OptionController : MonoBehaviour
 
 	public void OnQualitySliderChanged(float newValue)
 	{
-		GameManager.Instance.OptionsService.GraphicQuality = (int)newValue;
-		switch (GameManager.Instance.OptionsService.GraphicQuality)
+		OptionsService optionsService = GameManager.Instance.GetService<OptionsService>();
+		optionsService.GraphicQuality = (int)newValue;
+		switch (optionsService.GraphicQuality)
 		{
 			case 0:
 				QualityTextLocalized.SetEntry("LowQuality");
@@ -94,23 +97,23 @@ public class OptionController : MonoBehaviour
 		QualityTextLocalized.RefreshString();
 	}
 
-	public void OnGlobalVolumeChanged(float newValue) => GameManager.Instance.OptionsService.GlobalVolume = (int)newValue;
+	public void OnGlobalVolumeChanged(float newValue) => GameManager.Instance.GetService<OptionsService>().GlobalVolume = (int)newValue;
 
-	public void OnMusicVolumeChanged(float newValue) => GameManager.Instance.OptionsService.MusicVolume = (int)newValue;
+	public void OnMusicVolumeChanged(float newValue) => GameManager.Instance.GetService<OptionsService>().MusicVolume = (int)newValue;
 
 	public void OnEffectVolumeChanged(float newValue)
 	{
-		GameManager.Instance.OptionsService.EffectVolume = (int)newValue;
+		GameManager.Instance.GetService<OptionsService>().EffectVolume = (int)newValue;
 		if (CanPlayEffect) StartCoroutine(PlayEffectRoutine());
 	}
 
 	private IEnumerator PlayEffectRoutine()
 	{
 		CanPlayEffect = false;
-		GameManager.Instance.SoundService.Play(SoundService.Clips.Bonus);
+		GameManager.Instance.GetService<SoundService>().Play(SoundService.Clips.Bonus);
 		yield return (WaitForSeconds);
 		CanPlayEffect = true;
 	}
 
-	public void OnShopClick() => GameManager.Instance.EventsService.Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Shop });
+	public void OnShopClick() => GameManager.Instance.GetService<EventsService>().Raise(Events.OnSceneRequested, new OnSceneRequestedEventArg() { Scene = SceneNames.Shop });
 }
